@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="base_txt" tilewidth="32" tileheight="32" tilecount="2016" columns="32">
+  <image source="base_txt.png" width="1024" height="2016"/>
+ </tileset>
+ <tileset firstgid="2017" name="chunk" tilewidth="32" tileheight="32" tilecount="35" columns="5">
+  <image source="chunk.png" width="160" height="224"/>
+  <tile id="0">
+   <properties>
+    <property name="enter" value="true"/>
+    <property name="index" value="1"/>
+    <property name="map" value="sword_shop"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="enter" value="true"/>
+    <property name="index" value="2"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="enter" value="true"/>
+    <property name="index" value="3"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="enter" value="true"/>
+    <property name="index" value="4"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="index" value="1"/>
+    <property name="spawn" value="true"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="index" value="1"/>
+    <property name="spawn" value="true"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="index" value="2"/>
+    <property name="spawn" value="true"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="index" value="3"/>
+    <property name="spawn" value="true"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="index" value="4"/>
+    <property name="spawn" value="true"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="index" value="8"/>
+    <property name="spawn" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="enter_block" width="40" height="20" offsetx="6.66667" offsety="9.33333">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglEwGMErdvz4IRL7EQG1xODHSOwnROrBBz4gyX8koJYY8AnJjM8EzCPGfQMJRt1HGRh1H2Vg1H2UAVq47wcVzaO0LqAHBgCg/ZvtgAwAAA==
+  </data>
+ </layer>
+ <layer name="Warstwa Kafelków 3" width="40" height="20" offsetx="7" offsety="9">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3DQQ0AAAwDobNX/4bmYi9IWDVVVdWHBzgLgzCADAAA
+  </data>
+ </layer>
+ <layer name="Warstwa Kafelków 1" width="40" height="20" offsetx="6" offsety="9">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGDpgIhMDwyQm0mlcYCpQbhoT6TQusBEot4mJdBoX2AqU28ZEOj3qPtq4DwS+M5GGCYFR8wbWPF92BgYfdgRNqnno+qltXi4Q5yDRpJj1gwlTP7XNGwWjYBSMglEwCsgBACRnngOADAAA
+  </data>
+ </layer>
+ <layer name="Warstwa Kafelków 2" width="40" height="20" offsetx="7.66667" offsety="7">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBQMJ+DPxMAQwES+PK3NyweqLYCqP4Sk7wgTpjyp5j1H0veETPOQwRJ27GxyAbXNO8KOnT1YzBsFo2AUjIJRMAqwAQB4U+IVgAwAAA==
+  </data>
+ </layer>
+</map>
