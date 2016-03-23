@@ -29,6 +29,7 @@ public class Wire2D extends Game {
 		System.err.println(" width " + width + " height " + height);
 	}
 
+	//LOL
 	@Override
 	public void pause() {
 		super.pause();
