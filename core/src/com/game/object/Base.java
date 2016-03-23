@@ -3,6 +3,7 @@ package com.game.object;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -23,10 +24,10 @@ public class Base {
     public Animation mAnimation;
 
     //obraz postaci
-    public Texture mImage;
-    public Texture mUpImage;
-    public Texture mDownImage;
-    public Texture mRightImage;
-    public Texture mLeftImage;
+    public TextureRegion mImage;
+    public TextureRegion mUpImage;
+    public TextureRegion mDownImage;
+    public TextureRegion mRightImage;
+    public TextureRegion mLeftImage;
 
 }

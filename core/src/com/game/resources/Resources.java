@@ -42,6 +42,10 @@ public class Resources {
         return TextureRegion.split (textureMap.get (path), 32, 48);
     }
 
+    public static Texture getTexture(String path, int x, int y){
+        return getTextureRegion (path)[x][y].getTexture ();
+    }
+
             /*//player
             sprites.put("player", loadSprite("res/object/creatures/player/player.png", Tile.SIZE_PLAYER_X, Tile.SIZE_PLAYER_Y));
             sprites.put("adas", loadSprite("res/object/creatures/player/adas.png", Tile.SIZE_PLAYER_X, Tile.SIZE_PLAYER_Y));

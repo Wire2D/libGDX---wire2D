@@ -7,20 +7,17 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.game.operations.Movement;
 import com.game.resources.Resources;
 
 
 public class Wire2D extends Game {
-	//SpriteBatch batch;
 	private String platform;
 	ObjectAll objectAll;
 	Resources resources;
 	private SpriteBatch batch;
-	float stateTime;
-	TextureRegion currentFrame;
-	//TiledMap map;
-	//OrthographicCamera camera;
-	//TiledMapRenderer tiledMapRenderer;
+	private Movement movement;
 
 	public Wire2D(String platform) {
 		this.platform = platform;
@@ -72,11 +69,15 @@ public class Wire2D extends Game {
 		super.finalize();
 	}
 
+	/**
+	 * Tworzenie obiektow
+	 */
 	@Override
 	public void create () {
 		resources = new Resources ();
 		objectAll = new ObjectAll(platform);
 		batch = new SpriteBatch ();
+		movement = new Movement (objectAll.mPlayer);
 
 		System.err.println("Width: " + Gdx.graphics.getWidth ());
 		System.err.println("Height: " + Gdx.graphics.getHeight ());
@@ -84,14 +85,11 @@ public class Wire2D extends Game {
 
 	@Override
 	public void render () {
+		movement.update(objectAll,(TiledMapTileLayer) objectAll.ObjectMap.get (objectAll.aMap).mMap.getLayers ().get (0));
 		objectAll.render();
-		stateTime += Gdx.graphics.getDeltaTime();           // #15
-		currentFrame = objectAll.mPlayer.mDownAnimation.getKeyFrame(stateTime, true);
 
 		batch.begin();
-		batch.draw (currentFrame,50,50);
+		objectAll.mPlayer.render (batch);
 		batch.end();
-
-
 	}
 }

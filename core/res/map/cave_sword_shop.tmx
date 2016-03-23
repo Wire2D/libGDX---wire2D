@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="enter_block" tilewidth="32" tileheight="32" tilecount="35" columns="5">
+  <image source="chunk.png" width="160" height="224"/>
+  <tile id="0">
+   <properties>
+    <property name="enter" value="true"/>
+    <property name="index" value="2"/>
+    <property name="map" value="sword_shop"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="enter" value="true"/>
+    <property name="index" value="1"/>
+    <property name="map" value="cave_sword_shop_boss"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="index" value="2"/>
+    <property name="spawn" value="true"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="index" value="1"/>
+    <property name="spawn" value="true"/>
+   </properties>
+  </tile>
+  <tile id="25">
+   <properties>
+    <property name="level" value="4"/>
+    <property name="mob" value="true"/>
+    <property name="name" value="chicken"/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="level" value="3"/>
+    <property name="mob" value="true"/>
+    <property name="name" value="chicken"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="level" value="2"/>
+    <property name="mob" value="true"/>
+    <property name="name" value="chicken"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="level" value="1"/>
+    <property name="mob" value="true"/>
+    <property name="name" value="chicken"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="36" name="base" tilewidth="32" tileheight="32" tilecount="2016" columns="32">
+  <image source="base_txt.png" width="1024" height="2016"/>
+ </tileset>
+ <layer name="enter_block" width="40" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC1NlYGBQHcVUxVwUYCYoJlc/sW4h12+CNAiXgY4vQu4daHeQ4j6pQeCuwRh+0oPcfYM9/EbdN+q+wYaHsvtkBrn76IllB7n7aBF+AnR0HzmYkUL9xGIAZsmcj4AMAAA=
+  </data>
+ </layer>
+ <layer name="1" width="40" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3DMQ0AAAwDoE517dfFLkjoJVVVVX04UkRY4YAMAAA=
+  </data>
+ </layer>
+ <layer name="2" width="40" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2OwQ2AIBAE76hKO9FOtAnrwUYktmAB8hUiJHKA+vPhTrKZ28BjNRPpkDmkVUSLs+HU8q69XW0KXd6xNyrd4vvEeXp1v6Xm0oa39unEHtl91rBvd7Z8OsY+ON5P/0q2hT1+y0Z5RvfvCwaVbwEAAAAAAP/iANevouSADAAA
+  </data>
+ </layer>
+ <layer name="3" width="40" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGFngJTMEDzZQy87A8JmNgeE50G0vmCHsOvaBdhUCzAW6RRjJPSD2vEHkvlEwCkbBKBgFo2AUjIJRMDQAAO84kb2ADAAA
+  </data>
+ </layer>
+</map>
