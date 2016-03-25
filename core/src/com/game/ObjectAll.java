@@ -3,7 +3,8 @@ package com.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.utils.viewport.*;
+import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.game.object.Map;
 import com.game.object.creature.Player;
 import com.game.operations.Testy;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by Mazek27 on 21.03.2016.
  */
+
 public class ObjectAll {
     public static ArrayList<Map> ObjectMap;
     OrthographicCamera camera;
