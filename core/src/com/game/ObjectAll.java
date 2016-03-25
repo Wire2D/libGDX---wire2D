@@ -71,9 +71,7 @@ public class ObjectAll {
 
         for(int i = 0; i < 40; i++){
             for(int j = 0; j < 20; j++){
-                //System.err.println(Testy.isSpawn (mPlayer,TMTL,i,j));
                 if(Testy.isSpawn (TMTL,i,j)){
-                    System.err.println("dziala " + index + " = " + Testy.index (TMTL,i,j));
                     if(Testy.index (TMTL,i,j).equals (index)){
                         mPlayer.position.set(i * 32, j * 32);
                         break;

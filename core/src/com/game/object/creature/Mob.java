@@ -15,22 +15,24 @@ public class Mob extends Base {
 
     private TextureRegion currentFrame;
     float stateTime;
+    private int level;
 
-    public Mob(String name) {
-        mUpAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[3]);
-        mDownAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[0]);
-        mRightAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[2]);
-        mLeftAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[1]);
+    public Mob(String name, int x, int y, int level) {
+
+        mUpAnimation = new Animation(0.2f, Resources.getTextureRegion (name, true)[3]);
+        mDownAnimation = new Animation(0.2f, Resources.getTextureRegion (name, true)[0]);
+        mRightAnimation = new Animation(0.2f, Resources.getTextureRegion (name, true)[2]);
+        mLeftAnimation = new Animation(0.2f, Resources.getTextureRegion (name, true)[1]);
 
 
-        mUpImage = Resources.getTextureRegion (name)[3][0];
-        mDownImage = Resources.getTextureRegion (name)[0][0];
-        mRightImage = Resources.getTextureRegion (name)[2][0];
-        mLeftImage = Resources.getTextureRegion (name)[1][0];
+        mUpImage = Resources.getTextureRegion (name, true)[3][0];
+        mDownImage = Resources.getTextureRegion (name, true)[0][0];
+        mRightImage = Resources.getTextureRegion (name, true)[2][0];
+        mLeftImage = Resources.getTextureRegion (name, true)[1][0];
 
-        mImage = mUpImage;
+        mImage = mDownImage;
         mAnimation = mUpAnimation;
-        position = new Vector2 (300,300);
+        position = new Vector2 (x * 32,y * 32);
     }
 
     public void render(SpriteBatch batch){
