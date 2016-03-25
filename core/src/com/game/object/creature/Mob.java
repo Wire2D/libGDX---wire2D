@@ -9,14 +9,14 @@ import com.game.object.Base;
 import com.game.resources.Resources;
 
 /**
- * Created by Mazek27 on 22.03.2016.
+ * Created by Khaffel on 25.03.2016.
  */
-public class Player extends Base {
+public class Mob extends Base {
 
     private TextureRegion currentFrame;
     float stateTime;
 
-    public Player(String name) {
+    public Mob(String name) {
         mUpAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[3]);
         mDownAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[0]);
         mRightAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[2]);
@@ -30,7 +30,7 @@ public class Player extends Base {
 
         mImage = mUpImage;
         mAnimation = mUpAnimation;
-        position = new Vector2 (100,100);
+        position = new Vector2 (300,300);
     }
 
     public void render(SpriteBatch batch){

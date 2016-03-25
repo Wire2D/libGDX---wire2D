@@ -15,7 +15,6 @@ import java.util.ArrayList;
  * Created by Mazek27 on 21.03.2016.
  */
 
-// TEST
 public class ObjectAll {
     public static ArrayList<Map> ObjectMap;
     OrthographicCamera camera;
