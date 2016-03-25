@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.game.object.creature.Mob;
 import com.game.operations.Movement;
 import com.game.resources.Resources;
 
@@ -91,6 +92,9 @@ public class Wire2D extends Game {
 
 		batch.begin();
 		objectAll.mPlayer.render (batch);
+		for(Mob mob: objectAll.ObjectMap.get (objectAll.aMap).mMob){
+			mob.render (batch);
+		}
 		batch.end();
 	}
 }

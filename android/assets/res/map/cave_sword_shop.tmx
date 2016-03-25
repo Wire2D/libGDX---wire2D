@@ -37,28 +37,28 @@
    <properties>
     <property name="level" value="4"/>
     <property name="mob" value="true"/>
-    <property name="name" value="chicken"/>
+    <property name="name" value="frog"/>
    </properties>
   </tile>
   <tile id="26">
    <properties>
     <property name="level" value="3"/>
     <property name="mob" value="true"/>
-    <property name="name" value="chicken"/>
+    <property name="name" value="meduza"/>
    </properties>
   </tile>
   <tile id="27">
    <properties>
     <property name="level" value="2"/>
     <property name="mob" value="true"/>
-    <property name="name" value="chicken"/>
+    <property name="name" value="gargulec"/>
    </properties>
   </tile>
   <tile id="28">
    <properties>
     <property name="level" value="1"/>
     <property name="mob" value="true"/>
-    <property name="name" value="chicken"/>
+    <property name="name" value="troll"/>
    </properties>
   </tile>
  </tileset>
@@ -67,20 +67,20 @@
  </tileset>
  <layer name="enter_block" width="40" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAXUBlwUYCYoJlc/sW4hFwhSoJfabqE1GIrukxoIh+AAgyn8pLGIDSb3YQOj7qMMjLqPMjDqPsoAPvfJ0NMhOMBgCT9ZHOKDxX24ACXuE6CmQ3AAStqhjBTqJxYDAGqTROqADAAA
+   H4sIAAAAAAAAC1NlYGBQHcVUxVwUYCYoJlc/sW4h12+CNAiXgY4vQu4daHeQ4j6pQeCuwRh+0oPcfYM9/EbdN+q+wYaHsvtkBrn76IllB7n7aBF+AnR0HzmYkUL9xGIAZsmcj4AMAAA=
   </data>
  </layer>
- <layer name="1" width="40" height="20" visible="0">
+ <layer name="1" width="40" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+3DMQ0AAAwDoE517dfFLkjoJVVVVX04UkRY4YAMAAA=
   </data>
  </layer>
- <layer name="2" width="40" height="20" visible="0">
+ <layer name="2" width="40" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC+2OwQ2AIBAE76hKO9FOtAnrwUYktmAB8hUiJHKA+vPhTrKZ28BjNRPpkDmkVUSLs+HU8q69XW0KXd6xNyrd4vvEeXp1v6Xm0oa39unEHtl91rBvd7Z8OsY+ON5P/0q2hT1+y0Z5RvfvCwaVbwEAAAAAAP/iANevouSADAAA
   </data>
  </layer>
- <layer name="3" width="40" height="20" visible="0">
+ <layer name="3" width="40" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgGFngJTMEDzZQy87A8JmNgeE50G0vmCHsOvaBdhUCzAW6RRjJPSD2vEHkvlEwCkbBKBgFo2AUjIJRMDQAAO84kb2ADAAA
   </data>
