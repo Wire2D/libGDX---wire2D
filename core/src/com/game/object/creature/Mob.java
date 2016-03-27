@@ -4,9 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.game.object.Base;
 import com.game.resources.Resources;
+import javafx.scene.shape.Line;
 
 /**
  * Created by Khaffel on 25.03.2016.
@@ -14,7 +16,7 @@ import com.game.resources.Resources;
 public class Mob extends Base {
 
     private TextureRegion currentFrame;
-    float stateTime;
+    private float stateTime;
     private int level;
 
     public Mob(String name, int x, int y, int level) {
@@ -36,7 +38,7 @@ public class Mob extends Base {
     }
 
     public void render(SpriteBatch batch){
-        update();
+
         if(animate){
             stateTime += Gdx.graphics.getDeltaTime();           // #15
             currentFrame = mAnimation.getKeyFrame(stateTime, true);
@@ -44,9 +46,10 @@ public class Mob extends Base {
         } else {
             batch.draw (mImage, position.x - 16, position.y- 5);
         }
+        //update(batch, pos);
     }
 
-    private void update(){
+    private void update(SpriteBatch batch, Vector2 pos){
 
     }
 }
