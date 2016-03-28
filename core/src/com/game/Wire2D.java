@@ -79,7 +79,7 @@ public class Wire2D extends Game {
 	@Override
 	public void create () {
 		resources = new Resources ();
-		objectAll = new ObjectAll(platform);
+		//objectAll = new ObjectAll(camera);
 		batch = new SpriteBatch ();
 		movement = new Movement (objectAll.mPlayer);
 		gui = new GUI ();
