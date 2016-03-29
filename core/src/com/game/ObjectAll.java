@@ -24,7 +24,7 @@ public class ObjectAll {
     public Player mPlayer;
 
     public ObjectAll(OrthographicCamera camera){
-        mPlayer = new Player ("player");
+        mPlayer = new Player ("lili");
         aMap = 0;
         this.camera = camera;
 

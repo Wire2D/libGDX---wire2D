@@ -41,7 +41,7 @@ public class MainMenuScreen implements Screen {
         game.batch.end();
 
         if (Gdx.input.isKeyPressed (Keys.ANY_KEY)) {
-            game.setScreen(new GameScreen(game));
+            game.setScreen(game.gameScreen);
             dispose();
         }
     }

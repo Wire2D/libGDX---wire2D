@@ -28,7 +28,11 @@ public class Resources {
         textureMap = new HashMap<String, Texture> ();
         //sounds = new HashMap<String, Sound> ();
 
-        textureMap.put ("player",new Texture("res/player/adas.png"));
+        textureMap.put ("adas",new Texture("res/player/adas.png"));
+        textureMap.put ("alwin",new Texture("res/player/alwin.png"));
+        textureMap.put ("irmina",new Texture("res/player/irmina.png"));
+        textureMap.put ("lili",new Texture("res/player/lili.png"));
+        textureMap.put ("player",new Texture("res/player/player.png"));
         //Mob
         textureMap.put ("frog",new Texture("res/mob/mob/frog.png"));
         textureMap.put ("meduza",new Texture("res/mob/mob/meduza.png"));

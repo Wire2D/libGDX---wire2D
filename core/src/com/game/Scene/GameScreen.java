@@ -54,6 +54,9 @@ public class GameScreen implements Screen {
         movement.update(objectAll,(TiledMapTileLayer) objectAll.ObjectMap.get (objectAll.aMap).mMap.getLayers ().get (0));
         objectAll.render();
 
+        camera.update ();
+        game.batch.setProjectionMatrix (camera.combined);
+
         game.batch.begin();
         objectAll.mPlayer.render (game.batch);
         for(Mob mob: objectAll.ObjectMap.get (objectAll.aMap).mMob){
