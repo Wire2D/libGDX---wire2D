@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.game.GUI.GUI;
 import com.game.object.creature.Mob;
 import com.game.operations.Movement;
 import com.game.resources.Resources;
@@ -15,10 +16,11 @@ import com.game.resources.Resources;
 
 public class Wire2D extends Game {
 	private String platform;
-	ObjectAll objectAll;
-	Resources resources;
+	private ObjectAll objectAll;
+	private Resources resources;
 	private SpriteBatch batch;
 	private Movement movement;
+	private GUI gui;
 
 	public Wire2D(String platform) {
 		this.platform = platform;
@@ -77,9 +79,11 @@ public class Wire2D extends Game {
 	@Override
 	public void create () {
 		resources = new Resources ();
-		objectAll = new ObjectAll(platform);
+		//objectAll = new ObjectAll(camera);
 		batch = new SpriteBatch ();
 		movement = new Movement (objectAll.mPlayer);
+		gui = new GUI ();
+
 
 		System.err.println("Width: " + Gdx.graphics.getWidth ());
 		System.err.println("Height: " + Gdx.graphics.getHeight ());
@@ -95,6 +99,8 @@ public class Wire2D extends Game {
 		for(Mob mob: objectAll.ObjectMap.get (objectAll.aMap).mMob){
 			mob.render (batch);
 		}
+		gui.render (batch);
+
 		batch.end();
 	}
 }

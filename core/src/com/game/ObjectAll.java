@@ -21,11 +21,12 @@ public class ObjectAll {
     public int aMap;
 
     Viewport viewport;
-    Player mPlayer;
+    public Player mPlayer;
 
-    public ObjectAll(String platform){
-        mPlayer = new Player ("player");
+    public ObjectAll(OrthographicCamera camera){
+        mPlayer = new Player ("lili");
         aMap = 0;
+        this.camera = camera;
 
         float w = Gdx.app.getGraphics().getWidth();
         float h = Gdx.app.getGraphics().getHeight();
@@ -36,17 +37,7 @@ public class ObjectAll {
         ObjectMap = new ArrayList<Map> ();
         ObjectMap.add (new Map("shop_place"));
 
-        camera = new OrthographicCamera();
-        if(platform.equals ("desktop")){
-            viewport = new FillViewport (w,h,camera);
-            viewport.apply();
-            camera.position.set(camera.viewportWidth/2, camera.viewportHeight/2, 0);
-        } else {
-            viewport = new FillViewport (w,h, camera);
-            viewport.apply();
-            camera.position.set(camera.viewportWidth/2, camera.viewportHeight/2, 0);
-        }
-        camera.update();
+
     }
 
     public void render(){
