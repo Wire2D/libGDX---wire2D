@@ -74,7 +74,7 @@
  </tileset>
  <layer name="enter_block" width="40" height="20" offsetx="6.66667" offsety="9.33333">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYBSMglEwGMErdvz4IRL7EQG1xODHSOwnROrBBz4gyX8koJYY8AnJjM8EzCPGfQMJRt1HGRh1H2Vg1H2UAVq47wcVzaO0LqAHBgCg/ZvtgAwAAA==
+   H4sIAAAAAAAAC2NiYGBgGsWjeBSP4lE86PArdvz4IRL7EQG1xODHSOwnROrB5/4PSPIfCaglBn9CMuMzAfOIcd9giNuBdseo+0bdNxjxSHTfDyqaR2ldQA8MANqoXISADAAA
   </data>
  </layer>
  <layer name="Warstwa Kafelków 3" width="40" height="20" offsetx="7" offsety="9">

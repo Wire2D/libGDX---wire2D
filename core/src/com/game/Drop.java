@@ -4,9 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.game.Scene.GameScreen;
 import com.game.Scene.MainGameScreen;
-import com.game.Scene.MainMenuScreen;
 
 /**
  * Created by Mazek27 on 28.03.2016.
