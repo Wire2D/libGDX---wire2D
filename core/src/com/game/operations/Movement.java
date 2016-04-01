@@ -24,17 +24,22 @@ public class Movement {
     public void update (WorldController worldController, TiledMapTileLayer collisionLayer) {
         float delta = Gdx.graphics.getDeltaTime ();
 
-        if(!Gdx.input.isKeyPressed(Keys.W) ||
-                !Gdx.input.isKeyPressed(Keys.A) ||
-                !Gdx.input.isKeyPressed(Keys.D) ||
-                !Gdx.input.isKeyPressed(Keys.S)){
+        if(!PlayerController.pressUp() ||
+                !PlayerController.pressDown() ||
+                !PlayerController.pressLeft() ||
+                !PlayerController.pressRight()){
             player.animate = false;
+        }
+
+        if(!Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)){
+            speed = 250f;
+            player.SpeedAnimation = 0.2f;
         }
 
         /**
          * Ruch w góre
          */
-        if (Gdx.input.isKeyPressed (Keys.W)) {
+        if (PlayerController.pressUp()) {
             player.position.y += Math.round (speed * delta);
             player.animate = true;
             //**********************************************
@@ -56,7 +61,7 @@ public class Movement {
         /**
          * Róch w lewo
          */
-        if (Gdx.input.isKeyPressed (Keys.A)) {
+        if (PlayerController.pressLeft()) {
             player.position.x -= Math.round (speed * delta);
             player.animate = true;
             //**********************************************
@@ -78,7 +83,7 @@ public class Movement {
         /**
          * Ruch w prawo
          */
-        if (Gdx.input.isKeyPressed (Keys.D)) {
+        if (PlayerController.pressRight()) {
 
             player.position.x += Math.round (speed * delta);
             player.animate = true;
@@ -101,7 +106,7 @@ public class Movement {
         /**
          * Ruch w dół
          */
-        if (Gdx.input.isKeyPressed (Keys.S)) {
+        if (PlayerController.pressDown()) {
             player.position.y -= Math.round (speed * delta);
             player.animate = true;
             //**********************************************
@@ -118,6 +123,11 @@ public class Movement {
             }
             player.mImage = player.mDownImage;
             player.mAnimation = player.mDownAnimation;
+        }
+
+        if(Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)){
+            speed = 350f;
+            player.SpeedAnimation = 0.5f;
         }
     }
 }

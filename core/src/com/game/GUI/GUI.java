@@ -16,8 +16,10 @@ public class GUI {
     }
 
     public void render(SpriteBatch batch){
+        batch.begin();
         healthBar.drawBar (batch);
         manaBar.drawBar (batch);
+        batch.end();
     }
 
 }

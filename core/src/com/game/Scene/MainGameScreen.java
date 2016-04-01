@@ -3,8 +3,12 @@ package com.game.Scene;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.game.Drop;
+import com.game.GUI.GUI;
 import com.game.ObjectAll;
 import com.game.object.creature.Player;
 import com.game.operations.Movement;
@@ -24,6 +28,7 @@ public class MainGameScreen implements Screen {
     private Player player;
     private ObjectAll objectAll;
     private Resources resources;
+    private GUI gui;
 
     private boolean paused;
 
@@ -42,6 +47,8 @@ public class MainGameScreen implements Screen {
         player = new Player("adas");
         movement = new Movement(player);
         objectAll = new ObjectAll();
+        gui = new GUI();
+
 
 
 
@@ -66,7 +73,12 @@ public class MainGameScreen implements Screen {
         worldRenderer.render ();
         //Render player
         player.render(game.batch);
+
+        gui.render(game.batch);
+
     }
+
+
 
     /**
      * @param width

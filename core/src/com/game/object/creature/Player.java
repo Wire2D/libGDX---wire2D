@@ -15,12 +15,13 @@ public class Player extends Base {
 
     private TextureRegion currentFrame;
     float stateTime;
+    public float SpeedAnimation = 0.2f;
 
     public Player(String name) {
-        mUpAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[3]);
-        mDownAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[0]);
-        mRightAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[2]);
-        mLeftAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[1]);
+        mUpAnimation = new Animation(SpeedAnimation, Resources.getTextureRegion (name)[3]);
+        mDownAnimation = new Animation(SpeedAnimation, Resources.getTextureRegion (name)[0]);
+        mRightAnimation = new Animation(SpeedAnimation, Resources.getTextureRegion (name)[2]);
+        mLeftAnimation = new Animation(SpeedAnimation, Resources.getTextureRegion (name)[1]);
 
 
         mUpImage = Resources.getTextureRegion (name)[3][0];
