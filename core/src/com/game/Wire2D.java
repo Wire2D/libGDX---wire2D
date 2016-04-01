@@ -91,8 +91,8 @@ public class Wire2D extends Game {
 
 	@Override
 	public void render () {
-		movement.update(objectAll,(TiledMapTileLayer) objectAll.ObjectMap.get (objectAll.aMap).mMap.getLayers ().get (0));
-		objectAll.render();
+		//movement.update(objectAll,(TiledMapTileLayer) objectAll.ObjectMap.get (objectAll.aMap).mMap.getLayers ().get (0));
+		//objectAll.render();
 
 		batch.begin();
 		objectAll.mPlayer.render (batch);

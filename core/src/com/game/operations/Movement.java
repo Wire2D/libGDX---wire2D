@@ -21,7 +21,7 @@ public class Movement {
         this.pos = player.position;
     }
 
-    public void update (ObjectAll objectAll, TiledMapTileLayer collisionLayer) {
+    public void update (WorldController worldController, TiledMapTileLayer collisionLayer) {
         float delta = Gdx.graphics.getDeltaTime ();
 
         if(!Gdx.input.isKeyPressed(Keys.W) ||
@@ -47,7 +47,7 @@ public class Movement {
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                objectAll.changeMap(objectAll.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer));
+                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer), player);
             }
             player.mImage = player.mUpImage;
             player.mAnimation = player.mUpAnimation;
@@ -69,7 +69,7 @@ public class Movement {
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                objectAll.changeMap(objectAll.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer));
+                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
             }
             player.mImage = player.mLeftImage;
             player.mAnimation = player.mLeftAnimation;
@@ -92,7 +92,7 @@ public class Movement {
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                objectAll.changeMap(objectAll.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer));
+                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
             }
             player.mImage = player.mRightImage;
             player.mAnimation = player.mRightAnimation;
@@ -114,7 +114,7 @@ public class Movement {
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                objectAll.changeMap(objectAll.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer));
+                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
             }
             player.mImage = player.mDownImage;
             player.mAnimation = player.mDownAnimation;

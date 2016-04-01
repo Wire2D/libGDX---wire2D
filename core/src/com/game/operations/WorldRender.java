@@ -5,6 +5,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.game.Settings.Constants;
+import com.game.object.Map;
+
+import java.util.ArrayList;
 
 /**
  * Created by Mazek27 on 01.04.2016.
@@ -14,6 +17,10 @@ public class WorldRender implements Disposable {
     private OrthographicCamera camera;
     private SpriteBatch batch;
     private WorldController worldController;
+
+    public WorldController getWorldController() {
+        return worldController;
+    }
 
     public WorldRender (WorldController worldController){
         this.worldController = worldController;

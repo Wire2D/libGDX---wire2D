@@ -36,7 +36,7 @@ public class GameScreen implements Screen {
         camera.setToOrtho(false, Gdx.graphics.getWidth () / 2, Gdx.graphics.getHeight () / 2);
 
         resources = new Resources ();
-        objectAll = new ObjectAll(camera);
+        //objectAll = new ObjectAll(camera);
         batch = new SpriteBatch ();
         movement = new Movement (objectAll.mPlayer);
         gui = new GUI ();
@@ -51,8 +51,8 @@ public class GameScreen implements Screen {
     public void render (float delta) {
         Gdx.gl.glClearColor (0, 0, 0, 0);
         Gdx.gl.glClear (GL20.GL_COLOR_BUFFER_BIT);
-        movement.update(objectAll,(TiledMapTileLayer) objectAll.ObjectMap.get (objectAll.aMap).mMap.getLayers ().get (0));
-        objectAll.render();
+        //movement.update(objectAll,(TiledMapTileLayer) objectAll.ObjectMap.get (objectAll.aMap).mMap.getLayers ().get (0));
+        //objectAll.render();
 
         camera.update ();
         game.batch.setProjectionMatrix (camera.combined);

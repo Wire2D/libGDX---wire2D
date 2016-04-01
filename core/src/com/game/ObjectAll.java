@@ -17,22 +17,14 @@ import java.util.ArrayList;
 
 public class ObjectAll {
     public static ArrayList<Map> ObjectMap;
-    OrthographicCamera camera;
     public int aMap;
 
     Viewport viewport;
     public Player mPlayer;
 
-    public ObjectAll(OrthographicCamera camera){
+    public ObjectAll(){
         mPlayer = new Player ("lili");
         aMap = 0;
-        this.camera = camera;
-
-        float w = Gdx.app.getGraphics().getWidth();
-        float h = Gdx.app.getGraphics().getHeight();
-
-        System.err.println("Width: " + w);
-        System.err.println("Height: " + h);
 
         ObjectMap = new ArrayList<Map> ();
         ObjectMap.add (new Map("shop_place"));
@@ -41,7 +33,7 @@ public class ObjectAll {
     }
 
     public void render(){
-        ObjectMap.get (aMap).render (camera);
+        //ObjectMap.get (aMap).render (camera);
     }
 
     public void changeMap(ArrayList<Map> objectMap, String index, String name){
