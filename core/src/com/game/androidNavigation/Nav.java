@@ -13,6 +13,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
  * Created by Dariusz on 2016-04-01.
  */
 public class Nav {
+    public static boolean upNavPress = false;
+    public static boolean downNavPress = false;
+    public static boolean leftNavPress = false;
+    public static boolean rightNavPress = false;
+
     private ImageButton upButton;
     private ImageButton downButton;
     private ImageButton leftButton;
@@ -28,8 +33,12 @@ public class Nav {
         upButton.setBounds(10, 200, 80, 100);
         upButton.addListener(new InputListener() {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                System.err.println("Up");
+                upNavPress = true;
                 return true;
+            }
+
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                upNavPress = false;
             }
         });
 
@@ -37,8 +46,12 @@ public class Nav {
         downButton.setBounds(10, 90, 80, 100);
         downButton.addListener(new InputListener() {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                System.err.println("Down");
+                downNavPress = true;
                 return true;
+            }
+
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                downNavPress = false;
             }
         });
 
@@ -46,8 +59,12 @@ public class Nav {
         rightButton.setBounds(1180, 200, 80, 100);
         rightButton.addListener(new InputListener() {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                System.err.println("Right");
+                rightNavPress = true;
                 return true;
+            }
+
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                rightNavPress = false;
             }
         });
 
@@ -55,8 +72,12 @@ public class Nav {
         leftButton.setBounds(1090, 200, 80, 100);
         leftButton.addListener(new InputListener() {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                System.err.println("Left");
+                leftNavPress = true;
                 return true;
+            }
+
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                leftNavPress = false;
             }
         });
 

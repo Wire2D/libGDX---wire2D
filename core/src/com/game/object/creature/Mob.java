@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.game.object.Base;
 import com.game.resources.Resources;
-import javafx.scene.shape.Line;
 
 /**
  * Created by Khaffel on 25.03.2016.
