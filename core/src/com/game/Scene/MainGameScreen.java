@@ -3,9 +3,14 @@ package com.game.Scene;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.game.Drop;
+import com.game.ObjectAll;
+import com.game.object.creature.Player;
+import com.game.operations.Movement;
 import com.game.operations.WorldController;
 import com.game.operations.WorldRender;
+import com.game.resources.Resources;
 
 /**
  * Created by Mazek27 on 01.04.2016.
@@ -15,6 +20,11 @@ public class MainGameScreen implements Screen {
     private Drop game;
     private WorldController worldController;
     private WorldRender worldRenderer;
+    private Movement movement;
+    private Player player;
+    private ObjectAll objectAll;
+    private Resources resources;
+
     private boolean paused;
 
     public MainGameScreen (final Drop game) {
@@ -28,6 +38,12 @@ public class MainGameScreen implements Screen {
     public void show () {
         worldController = new WorldController ();
         worldRenderer = new WorldRender (worldController);
+        resources = new Resources();
+        player = new Player("adas");
+        movement = new Movement(player);
+        objectAll = new ObjectAll();
+
+
 
         paused = false;
     }
@@ -43,8 +59,13 @@ public class MainGameScreen implements Screen {
         Gdx.gl.glClearColor (0,0,0,0);
         Gdx.gl.glClear (GL20.GL_COLOR_BUFFER_BIT);
 
+        //Update movement
+        int aMap = worldRenderer.getWorldController().aMap;
+        movement.update(worldController, (TiledMapTileLayer) worldRenderer.getWorldController().ObjectMap.get(aMap).mMap.getLayers().get(0));                      //objectAll.ObjectMap.get (objectAll.aMap).mMap.getLayers ().get (0));
         //Render game screen
         worldRenderer.render ();
+        //Render player
+        player.render(game.batch);
     }
 
     /**

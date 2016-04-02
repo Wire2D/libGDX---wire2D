@@ -25,11 +25,9 @@ public class Map {
     public Map (String nazwa) {
 
         this.mName = nazwa;
-        try {
+
             mMap = new TmxMapLoader ().load ("res/map/" + nazwa + ".tmx");
-        } catch (Exception e) {
-            mMap = new TmxMapLoader ().load ("core/res/map/" + nazwa + ".tmx");
-        }
+
         tiledMapRenderer = new OrthogonalTiledMapRenderer (mMap);
 
         backgroudLayers = new int[mMap.getLayers ().getCount ()];

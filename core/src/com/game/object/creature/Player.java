@@ -35,6 +35,7 @@ public class Player extends Base {
 
     public void render(SpriteBatch batch){
         update();
+        batch.begin();
         if(animate){
             stateTime += Gdx.graphics.getDeltaTime();           // #15
             currentFrame = mAnimation.getKeyFrame(stateTime, true);
@@ -42,6 +43,7 @@ public class Player extends Base {
         } else {
             batch.draw (mImage, position.x - 16, position.y- 5);
         }
+        batch.end();
     }
 
     private void update(){
