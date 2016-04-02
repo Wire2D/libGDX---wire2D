@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.game.Drop;
 import com.game.ObjectAll;
+import com.game.androidNavigation.Nav;
 import com.game.object.creature.Player;
 import com.game.operations.Movement;
 import com.game.operations.WorldController;
@@ -24,6 +25,7 @@ public class MainGameScreen implements Screen {
     private Player player;
     private ObjectAll objectAll;
     private Resources resources;
+    private Nav androidNav;
 
     private boolean paused;
 
@@ -42,7 +44,7 @@ public class MainGameScreen implements Screen {
         player = new Player("adas");
         movement = new Movement(player);
         objectAll = new ObjectAll();
-
+        androidNav = new Nav();
 
 
         paused = false;
@@ -66,6 +68,7 @@ public class MainGameScreen implements Screen {
         worldRenderer.render ();
         //Render player
         player.render(game.batch);
+        androidNav.render();
     }
 
     /**
