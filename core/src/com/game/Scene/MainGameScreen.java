@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.game.Drop;
+import com.game.GUI.GUI;
 import com.game.ObjectAll;
 import com.game.androidNavigation.Nav;
 import com.game.object.creature.Player;
@@ -25,6 +26,7 @@ public class MainGameScreen implements Screen {
     private Player player;
     private ObjectAll objectAll;
     private Resources resources;
+    private GUI gui;
     private Nav androidNav;
 
     private boolean paused;
@@ -45,6 +47,7 @@ public class MainGameScreen implements Screen {
         movement = new Movement(player);
         objectAll = new ObjectAll();
         androidNav = new Nav();
+        gui = new GUI();
 
 
         paused = false;
@@ -68,7 +71,8 @@ public class MainGameScreen implements Screen {
         worldRenderer.render ();
         //Render player
         player.render(game.batch);
-        androidNav.render();
+        //androidNav.render();
+        GUI.render(game.batch,player.getHP(), player.getmHP());
     }
 
     /**

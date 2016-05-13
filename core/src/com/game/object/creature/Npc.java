@@ -17,6 +17,7 @@ public class Npc extends Base {
     float stateTime;
 
     public Npc(String name) {
+        super(49,49,45,65,65,45,100);
         mUpAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[3]);
         mDownAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[0]);
         mRightAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[2]);

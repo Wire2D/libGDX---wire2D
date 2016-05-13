@@ -19,6 +19,7 @@ public class Mob extends Base {
     private int level;
 
     public Mob(String name, int x, int y, int level) {
+        super(49,49,45,65,65,45,100);
 
         mUpAnimation = new Animation(0.2f, Resources.getTextureRegion (name, true)[3]);
         mDownAnimation = new Animation(0.2f, Resources.getTextureRegion (name, true)[0]);

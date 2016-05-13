@@ -99,7 +99,7 @@ public class Wire2D extends Game {
 		for(Mob mob: objectAll.ObjectMap.get (objectAll.aMap).mMob){
 			mob.render (batch);
 		}
-		gui.render (batch);
+		//gui.render (batch);
 
 		batch.end();
 	}

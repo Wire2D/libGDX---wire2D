@@ -36,6 +36,10 @@ public class PlayerController {
                 Nav.rightNavPress);
     }
 
+    public static boolean pressAttack(){
+        return (Gdx.input.isKeyJustPressed(Keys.SPACE));
+    }
+
 
 
 }

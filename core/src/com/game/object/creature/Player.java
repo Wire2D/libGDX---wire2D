@@ -18,6 +18,7 @@ public class Player extends Base {
     public float SpeedAnimation = 0.2f;
 
     public Player(String name) {
+        super(49,49,45,65,65,45,100);
         mUpAnimation = new Animation(SpeedAnimation, Resources.getTextureRegion (name)[3]);
         mDownAnimation = new Animation(SpeedAnimation, Resources.getTextureRegion (name)[0]);
         mRightAnimation = new Animation(SpeedAnimation, Resources.getTextureRegion (name)[2]);

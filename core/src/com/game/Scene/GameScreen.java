@@ -62,7 +62,7 @@ public class GameScreen implements Screen {
         for(Mob mob: objectAll.ObjectMap.get (objectAll.aMap).mMob){
             mob.render (game.batch);
         }
-        gui.render (game.batch);
+        //gui.render (game.batch);
         game.batch.end();
 
         if (Gdx.input.isKeyPressed (Input.Keys.ESCAPE)) {

@@ -7,18 +7,21 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public class GUI {
 
-    private HealthBar healthBar;
-    private ManaBar manaBar;
+    private static HpBar healthBar;
+    private static SpBar spBar;
+    private static ExpBar expBar;
 
     public GUI(){
-        healthBar = new HealthBar ();
-        manaBar = new ManaBar ();
+        healthBar = new HpBar ();
+        spBar = new SpBar ();
+        expBar = new ExpBar();
     }
 
-    public void render(SpriteBatch batch){
+    public static void render(SpriteBatch batch, int aHP, int mHP){
         batch.begin();
-        healthBar.drawBar (batch);
-        manaBar.drawBar (batch);
+        healthBar.drawBar (batch,mHP,aHP);
+        spBar.drawBar (batch);
+        expBar.drawBar(batch);
         batch.end();
     }
 
