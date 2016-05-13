@@ -87,7 +87,7 @@ public class Base {
     }
 
     public void setDEF() {
-        this.DEF = (int)(((((DEF_BASE + VI_DEF) * 2) + (Math.sqrt(EV_ATT)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1)) + 5;
+        this.DEF = (int)(((((DEF_BASE + VI_DEF) * 2) + (Math.sqrt(EV_DEF)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1)) + 5;
     }
 
     public void setHP() {
