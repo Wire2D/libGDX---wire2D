@@ -130,9 +130,6 @@ public class Movement {
             player.SpeedAnimation = 0.5f;
         }
 
-        if(PlayerController.pressAttack()){
-            player.setHP(player.getHP() - 1);
-            System.out.println(player.getHP());
-        }
+
     }
 }

@@ -20,6 +20,7 @@ public class Wire2D extends Game {
 	private Resources resources;
 	private SpriteBatch batch;
 	private Movement movement;
+
 	private GUI gui;
 
 	public Wire2D(String platform) {

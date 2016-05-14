@@ -9,6 +9,7 @@ import com.game.GUI.GUI;
 import com.game.ObjectAll;
 import com.game.androidNavigation.Nav;
 import com.game.object.creature.Player;
+import com.game.operations.Attack;
 import com.game.operations.Movement;
 import com.game.operations.WorldController;
 import com.game.operations.WorldRender;
@@ -24,6 +25,7 @@ public class MainGameScreen implements Screen {
     private WorldRender worldRenderer;
     private Movement movement;
     private Player player;
+    private Attack attackController;
     private ObjectAll objectAll;
     private Resources resources;
     private GUI gui;
@@ -45,6 +47,7 @@ public class MainGameScreen implements Screen {
         resources = new Resources();
         player = new Player("adas");
         movement = new Movement(player);
+        attackController = new Attack(player);
         objectAll = new ObjectAll();
         androidNav = new Nav();
         gui = new GUI();
@@ -66,7 +69,8 @@ public class MainGameScreen implements Screen {
 
         //Update movement
         int aMap = worldRenderer.getWorldController().aMap;
-        movement.update(worldController, (TiledMapTileLayer) worldRenderer.getWorldController().ObjectMap.get(aMap).mMap.getLayers().get(0));                      //objectAll.ObjectMap.get (objectAll.aMap).mMap.getLayers ().get (0));
+        movement.update(worldController, (TiledMapTileLayer) worldRenderer.getWorldController().ObjectMap.get(aMap).mMap.getLayers().get(0));
+        attackController.update(null);
         //Render game screen
         worldRenderer.render ();
         //Render player

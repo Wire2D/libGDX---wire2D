@@ -10,8 +10,6 @@ import java.util.List;
  */
 public class Hunter extends Super_Class_Klasy {
 
-    List<Skill> skillList;
-
     public Hunter() {
         super(39, 52, 43, 60, 50, 65);
         skillList = new ArrayList<Skill>();

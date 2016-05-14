@@ -40,6 +40,42 @@ public class PlayerController {
         return (Gdx.input.isKeyJustPressed(Keys.SPACE));
     }
 
+    public static boolean pressSkill_1(){
+        return Gdx.input.isKeyJustPressed(Keys.NUM_1);
+    }
+
+    public static boolean pressSkill_2(){
+        return Gdx.input.isKeyJustPressed(Keys.NUM_2);
+    }
+
+    public static boolean pressSkill_3(){
+        return Gdx.input.isKeyJustPressed(Keys.NUM_3);
+    }
+
+    public static boolean pressSkill_4(){
+        return Gdx.input.isKeyJustPressed(Keys.NUM_4);
+    }
+
+    public static boolean pressSkill_5(){
+        return Gdx.input.isKeyJustPressed(Keys.NUM_5);
+    }
+
+    public static boolean pressSkill_6(){
+        return Gdx.input.isKeyJustPressed(Keys.NUM_6);
+    }
+
+    public static boolean pressSkill_7(){
+        return Gdx.input.isKeyJustPressed(Keys.NUM_7);
+    }
+
+    public static boolean pressSkill_8(){
+        return Gdx.input.isKeyJustPressed(Keys.NUM_8);
+    }
+
+    public static boolean pressSkill_9(){
+        return Gdx.input.isKeyJustPressed(Keys.NUM_9);
+    }
+
 
 
 }

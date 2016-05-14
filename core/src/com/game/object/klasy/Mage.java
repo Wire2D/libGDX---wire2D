@@ -10,8 +10,6 @@ import java.util.List;
  */
 public class Mage extends Super_Class_Klasy {
 
-    List<Skill> skillList;
-
     public Mage() {
         super(45, 49, 49, 65, 65, 45);
         skillList = new ArrayList<Skill>();

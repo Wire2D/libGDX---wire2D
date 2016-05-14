@@ -14,4 +14,16 @@ public class Skill {
         this.power_point = power_point;
         this.power = power;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPower_point() {
+        return power_point;
+    }
+
+    public int getPower() {
+        return power;
+    }
 }

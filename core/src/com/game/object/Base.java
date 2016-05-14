@@ -119,8 +119,9 @@ public class Base {
      * @param oponent
      * @return
      */
-    public String damage(Base oponent){
-        int damage = (int) (((((2*LEVEL) + 10)*Math.pow(250,-1))*(ATT*Math.pow(oponent.DEF,-1))*65 + 2) * modifer(oponent));
+    public String damage(Base oponent, int skill){
+        int base_power = klasa.getSkillList().get(skill).getPower();
+        int damage = (int) (((((2*LEVEL) + 10)*Math.pow(250,-1))*(ATT*Math.pow(oponent.DEF,-1))*base_power + 2) * modifer(oponent));
         oponent.HP -= damage;
         System.out.println(damage);
         return String.valueOf(damage);
