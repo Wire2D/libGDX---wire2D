@@ -20,43 +20,43 @@ public class Attack {
     public void update (Base oponent){
         float delta = Gdx.graphics.getDeltaTime ();
 
-        if(oponent != null) {
+        if(oponent == null) {
             if (PlayerController.pressAttack()) {
                 //player.setHP(player.getHP() - 1);
                 player.damage(player, cSkill);
-                System.out.println(player.getHP());
+                System.out.println("Życie : " + player.getHP());
             }
 
             if (PlayerController.pressSkill_1()){
-                cSkill = 1;
+                cSkill = 0;
             }
 
             if (PlayerController.pressSkill_2()){
-                cSkill = 2;
+                cSkill = 1;
             }
 
             if (PlayerController.pressSkill_3()){
-                cSkill = 3;
+                cSkill = 2;
             }
 
             if (PlayerController.pressSkill_4()){
-                cSkill = 4;
+                cSkill = 3;
             }
 
             if (PlayerController.pressSkill_5()){
-                cSkill = 5;
+                cSkill = 4;
             }
 
             if (PlayerController.pressSkill_6()){
-                cSkill = 6;
+                cSkill = 5;
             }
 
             if (PlayerController.pressSkill_7()){
-                cSkill = 7;
+                cSkill = 6;
             }
 
             if (PlayerController.pressSkill_8()){
-                cSkill = 8;
+                cSkill = 7;
             }
 
 
@@ -64,7 +64,7 @@ public class Attack {
 
             if (PlayerController.pressAttack()) {
                 player.damage(player, cSkill);
-                System.out.println(player.getHP());
+                System.out.println("Życie : " + player.getHP());
             }
 
         }

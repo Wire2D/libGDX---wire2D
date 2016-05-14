@@ -11,7 +11,7 @@ import java.util.List;
 public class Warrior extends Super_Class_Klasy {
 
     public Warrior() {
-        super(44, 48, 65, 50, 64, 43);
+        super(300, 48, 65, 50, 64, 43);
         skillList = new ArrayList<Skill>();
         skillList.add(new Skill("Wrap", 5, 10));
         skillList.add(new Skill("Fury Attack", 20, 15));

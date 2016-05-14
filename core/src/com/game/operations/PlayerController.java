@@ -72,10 +72,6 @@ public class PlayerController {
         return Gdx.input.isKeyJustPressed(Keys.NUM_8);
     }
 
-    public static boolean pressSkill_9(){
-        return Gdx.input.isKeyJustPressed(Keys.NUM_9);
-    }
-
 
 
 }
