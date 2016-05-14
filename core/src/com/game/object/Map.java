@@ -1,6 +1,7 @@
 package com.game.object;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.game.object.creature.Mob;
@@ -57,5 +58,18 @@ public class Map {
     public void render(OrthographicCamera camera){
         tiledMapRenderer.setView (camera);
         tiledMapRenderer.render (backgroudLayers);
+        renderMobs();
     }
+
+    //begin scorpion43
+    //funkcja do renderowania mobow
+    public void renderMobs() {
+        SpriteBatch batch = new SpriteBatch();
+        batch.begin();
+        for (Mob mob : mMob) {
+            mob.render(batch);
+        }
+        batch.end();
+    }
+    //end scorpion43
 }
