@@ -1,42 +1,40 @@
-package com.game;
+package com.game.operations;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.utils.viewport.FillViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.game.object.Map;
 import com.game.object.creature.Player;
-import com.game.operations.Testy;
 
 import java.util.ArrayList;
 
 /**
- * Created by Mazek27 on 21.03.2016.
+ * Created by Mazek27 on 01.04.2016.
  */
-
-public class ObjectAll {
+public class WorldController {
+    private static final String TAG = WorldController.class.getName();
+    private static String currentMapName;
     public static ArrayList<Map> ObjectMap;
     public int aMap;
 
-    Viewport viewport;
-    public Player mPlayer;
+    public WorldController () {
+        init ();
+    }
 
-    public ObjectAll(){
-        mPlayer = new Player ("lili");
+    private void init () {
         aMap = 0;
 
         ObjectMap = new ArrayList<Map> ();
         ObjectMap.add (new Map("shop_place"));
-
-
+    }
+    public void update (float deltaTime, OrthographicCamera camera) {
+        ObjectMap.get (aMap).render (camera);
     }
 
-    public void render(){
-        //ObjectMap.get (aMap).render (camera);
-    }
-
-    public void changeMap(ArrayList<Map> objectMap, String index, String name){
+    public void changeMap(ArrayList<Map> objectMap, String index, String name, Player player){
         for(int i = 0 ; i < objectMap.size (); i++){
             if(objectMap.get (i).mName == name){
                 this.aMap = i;
@@ -56,7 +54,7 @@ public class ObjectAll {
             for(int j = 0; j < 20; j++){
                 if(Testy.isSpawn (TMTL,i,j)){
                     if(Testy.index (TMTL,i,j).equals (index)){
-                        mPlayer.position.set(i * 32, j * 32);
+                        player.position.set(i * 32, j * 32);
                         break;
                     }
                 }
@@ -64,3 +62,4 @@ public class ObjectAll {
         }
     }
 }
+

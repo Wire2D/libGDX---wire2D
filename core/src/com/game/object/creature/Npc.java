@@ -6,24 +6,23 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.game.object.Base;
-import com.game.object.klasy.Warrior;
+import com.game.object.klasy.Mage;
 import com.game.resources.Resources;
 
 /**
- * Created by Mazek27 on 22.03.2016.
+ * Created by Khaffel on 25.03.2016.
  */
-public class Player extends Base {
+public class Npc extends Base {
 
     private TextureRegion currentFrame;
     float stateTime;
-    public float SpeedAnimation = 0.2f;
 
-    public Player(String name) {
-        super(new Warrior());
-        mUpAnimation = new Animation(SpeedAnimation, Resources.getTextureRegion (name)[3]);
-        mDownAnimation = new Animation(SpeedAnimation, Resources.getTextureRegion (name)[0]);
-        mRightAnimation = new Animation(SpeedAnimation, Resources.getTextureRegion (name)[2]);
-        mLeftAnimation = new Animation(SpeedAnimation, Resources.getTextureRegion (name)[1]);
+    public Npc(String name) {
+        super(new Mage());
+        mUpAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[3]);
+        mDownAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[0]);
+        mRightAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[2]);
+        mLeftAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[1]);
 
 
         mUpImage = Resources.getTextureRegion (name)[3][0];
@@ -33,12 +32,11 @@ public class Player extends Base {
 
         mImage = mUpImage;
         mAnimation = mUpAnimation;
-        position = new Vector2 (100,100);
+        position = new Vector2 (200,200);
     }
 
     public void render(SpriteBatch batch){
         update();
-        batch.begin();
         if(animate){
             stateTime += Gdx.graphics.getDeltaTime();           // #15
             currentFrame = mAnimation.getKeyFrame(stateTime, true);
@@ -46,7 +44,6 @@ public class Player extends Base {
         } else {
             batch.draw (mImage, position.x - 16, position.y- 5);
         }
-        batch.end();
     }
 
     private void update(){
