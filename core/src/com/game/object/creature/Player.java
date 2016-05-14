@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.game.object.Base;
+import com.game.object.klasy.Warrior;
 import com.game.resources.Resources;
 
 /**
@@ -18,7 +19,7 @@ public class Player extends Base {
     public float SpeedAnimation = 0.2f;
 
     public Player(String name) {
-        super(49,49,45,65,65,45,100);
+        super(new Warrior());
         mUpAnimation = new Animation(SpeedAnimation, Resources.getTextureRegion (name)[3]);
         mDownAnimation = new Animation(SpeedAnimation, Resources.getTextureRegion (name)[0]);
         mRightAnimation = new Animation(SpeedAnimation, Resources.getTextureRegion (name)[2]);

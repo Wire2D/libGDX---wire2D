@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.game.object.Base;
+import com.game.object.klasy.Mage;
 import com.game.resources.Resources;
 
 /**
@@ -17,7 +18,7 @@ public class Npc extends Base {
     float stateTime;
 
     public Npc(String name) {
-        super(49,49,45,65,65,45,100);
+        super(new Mage());
         mUpAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[3]);
         mDownAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[0]);
         mRightAnimation = new Animation(0.2f, Resources.getTextureRegion (name)[2]);
