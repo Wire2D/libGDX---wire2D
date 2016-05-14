@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.game.object.Base;
+import com.game.operations.Testy;
 import com.game.resources.Resources;
 
 /**
@@ -18,6 +19,9 @@ public class Mob extends Base {
     private TextureRegion currentFrame;
     private float stateTime;
     private int level;
+
+    private final float MOVE_TIME = 0.02F;
+    private float moveTime = MOVE_TIME;
 
 
    /* begin scorpion43
@@ -53,7 +57,15 @@ public class Mob extends Base {
     }
 
     public void render(SpriteBatch batch){
-        changeMobPosition();
+        float time = Gdx.graphics.getDeltaTime();
+        moveTime -= time;
+
+        if (moveTime <= 0) {
+            moveTime = MOVE_TIME;
+            changeMobPosition();
+        }
+
+        //changeMobPosition();
         if(animate){
             stateTime += Gdx.graphics.getDeltaTime();           // #15
             currentFrame = mAnimation.getKeyFrame(stateTime, true);
@@ -127,6 +139,7 @@ public class Mob extends Base {
     /*scorpion43
     sprawdzenie czy mob nie chce uciec z areny  */
     protected boolean checkBoundaries() {
+//        if (Testy.isBlock(this, ))
         if (position.x <= 0 || position.x >= Gdx.graphics.getWidth()) {
             return true;
         }
