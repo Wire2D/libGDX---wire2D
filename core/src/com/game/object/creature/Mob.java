@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.game.object.Base;
@@ -56,7 +57,7 @@ public class Mob extends Base {
         position = new Vector2 (x * 32,y * 32);
     }
 
-    public void render(SpriteBatch batch){
+    public void render(SpriteBatch batch, TiledMapTileLayer collisionLayer){
         float time = Gdx.graphics.getDeltaTime();
         moveTime -= time;
 
