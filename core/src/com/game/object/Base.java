@@ -3,6 +3,7 @@ package com.game.object;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.game.object.klasy.Super_Class_Klasy;
 
 import java.util.Random;
 
@@ -31,12 +32,7 @@ public class Base {
     public TextureRegion mLeftImage;
 
     //Podstawowe statystyki
-    protected int HP_BASE;
-    protected int ATT_BASE;
-    protected int DEF_BASE;
-    protected int SATT_BASE;
-    protected int SDEF_BASE;
-    protected int SPD_BASE;
+    protected Super_Class_Klasy klasa;
     protected int LEVEL;
 
     //VI podstawa;
@@ -64,14 +60,9 @@ public class Base {
     protected int SDEF;
     protected int SPD;
 
-    public Base(int ATT_BASE, int DEF_BASE, int HP_BASE, int SATT_BASE, int SDEF_BASE, int SPD_BASE, int LEVEL) {
-        this.ATT_BASE = ATT_BASE;
-        this.DEF_BASE = DEF_BASE;
-        this.HP_BASE = HP_BASE;
-        this.SATT_BASE = SATT_BASE;
-        this.SDEF_BASE = SDEF_BASE;
-        this.SPD_BASE = SPD_BASE;
-        this.LEVEL = LEVEL;
+    public Base(Super_Class_Klasy klasa) {
+        this.klasa = klasa;
+        this.LEVEL = 1;
 
         setATT();
         setDEF();
@@ -83,31 +74,31 @@ public class Base {
     }
 
     public void setATT() {
-        this.ATT = (int)(((((ATT_BASE + VI_ATT) * 2) + (Math.sqrt(EV_ATT)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1)) + 5;
+        this.ATT = (int)(((((klasa.ATT_BASE + VI_ATT) * 2) + (Math.sqrt(EV_ATT)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1)) + 5;
     }
 
     public void setDEF() {
-        this.DEF = (int)(((((DEF_BASE + VI_DEF) * 2) + (Math.sqrt(EV_DEF)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1)) + 5;
+        this.DEF = (int)(((((klasa.DEF_BASE + VI_DEF) * 2) + (Math.sqrt(EV_DEF)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1)) + 5;
     }
 
     public void setHP() {
-        this.HP = (int)(((((HP_BASE + VI_HP) * 2) + (Math.sqrt(EV_HP)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1))+ LEVEL + 10;
+        this.HP = (int)(((((klasa.HP_BASE + VI_HP) * 2) + (Math.sqrt(EV_HP)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1))+ LEVEL + 10;
     }
 
     public void setHP(boolean a) {
-        this.mHP = (int)(((((HP_BASE + VI_HP) * 2) + (Math.sqrt(EV_HP)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1))+ LEVEL + 10;
+        this.mHP = (int)(((((klasa.HP_BASE + VI_HP) * 2) + (Math.sqrt(EV_HP)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1))+ LEVEL + 10;
     }
 
     public void setSATT() {
-        this.SATT = (int)(((((SATT_BASE + VI_SATT) * 2) + (Math.sqrt(EV_SATT)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1)) + 5;
+        this.SATT = (int)(((((klasa.SATT_BASE + VI_SATT) * 2) + (Math.sqrt(EV_SATT)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1)) + 5;
     }
 
     public void setSDEF() {
-        this.SDEF = (int)(((((SDEF_BASE + VI_SDEF) * 2) + (Math.sqrt(EV_SDEF)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1)) + 5;
+        this.SDEF = (int)(((((klasa.SDEF_BASE + VI_SDEF) * 2) + (Math.sqrt(EV_SDEF)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1)) + 5;
     }
 
     public void setSPD() {
-        this.SPD = (int)(((((SPD_BASE + VI_SPD) * 2) + (Math.sqrt(EV_SPD)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1)) + 5;
+        this.SPD = (int)(((((klasa.SPD_BASE + VI_SPD) * 2) + (Math.sqrt(EV_SPD)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1)) + 5;
     }
 
     public int getHP() {
@@ -122,17 +113,44 @@ public class Base {
         this.HP = HP;
     }
 
+
+    /**
+     * Obrazenia zadawane drugiej postaci
+     * @param oponent
+     * @return
+     */
     public String damage(Base oponent){
-        int damage = (int) (((((2*LEVEL) + 10)*Math.pow(250,-1))*(ATT*Math.pow(oponent.DEF,-1))*65 + 2) * modifer());
+        int damage = (int) (((((2*LEVEL) + 10)*Math.pow(250,-1))*(ATT*Math.pow(oponent.DEF,-1))*65 + 2) * modifer(oponent));
         oponent.HP -= damage;
         System.out.println(damage);
         return String.valueOf(damage);
     }
 
-    public double modifer(){
+
+    /**
+     * Obliczanie liczby randomowej do ataku
+     * @return
+     */
+    public double modifer(Base oponent){
         Random random = new Random();
-        double ran = 1.5 * 1 * 2 * 1.2 * ((85 + random.nextInt(15))* 0.01f);
-        //System.out.println(ran);
+        double STAB;
+        double CRITICAL;
+        double OTHER = 1;
+        double RANDOM = ((85 + random.nextInt(15))* 0.01f);
+
+        if(oponent.klasa != klasa){
+            STAB = 1.5;
+        } else {
+            STAB = 1;
+        }
+
+        if(random.nextFloat() * 100 < ((SPD + 76) / 1024)){
+            CRITICAL = 2.0;
+        } else {
+            CRITICAL = 1.0;
+        }
+
+        double ran = STAB * CRITICAL * OTHER * RANDOM;
         return ran;
     }
 
