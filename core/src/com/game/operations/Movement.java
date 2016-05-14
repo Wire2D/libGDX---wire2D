@@ -21,20 +21,25 @@ public class Movement {
         this.pos = player.position;
     }
 
-    public void update (ObjectAll objectAll, TiledMapTileLayer collisionLayer) {
+    public void update (WorldController worldController, TiledMapTileLayer collisionLayer) {
         float delta = Gdx.graphics.getDeltaTime ();
 
-        if(!Gdx.input.isKeyPressed(Keys.W) ||
-                !Gdx.input.isKeyPressed(Keys.A) ||
-                !Gdx.input.isKeyPressed(Keys.D) ||
-                !Gdx.input.isKeyPressed(Keys.S)){
+        if(!PlayerController.pressUp() ||
+                !PlayerController.pressDown() ||
+                !PlayerController.pressLeft() ||
+                !PlayerController.pressRight()){
             player.animate = false;
+        }
+
+        if(!Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)){
+            speed = 250f;
+            player.SpeedAnimation = 0.2f;
         }
 
         /**
          * Ruch w góre
          */
-        if (Gdx.input.isKeyPressed (Keys.W)) {
+        if (PlayerController.pressUp()) {
             player.position.y += Math.round (speed * delta);
             player.animate = true;
             //**********************************************
@@ -47,7 +52,7 @@ public class Movement {
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                objectAll.changeMap(objectAll.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer));
+                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer), player);
             }
             player.mImage = player.mUpImage;
             player.mAnimation = player.mUpAnimation;
@@ -56,7 +61,7 @@ public class Movement {
         /**
          * Róch w lewo
          */
-        if (Gdx.input.isKeyPressed (Keys.A)) {
+        if (PlayerController.pressLeft()) {
             player.position.x -= Math.round (speed * delta);
             player.animate = true;
             //**********************************************
@@ -69,7 +74,7 @@ public class Movement {
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                objectAll.changeMap(objectAll.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer));
+                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
             }
             player.mImage = player.mLeftImage;
             player.mAnimation = player.mLeftAnimation;
@@ -78,7 +83,7 @@ public class Movement {
         /**
          * Ruch w prawo
          */
-        if (Gdx.input.isKeyPressed (Keys.D)) {
+        if (PlayerController.pressRight()) {
 
             player.position.x += Math.round (speed * delta);
             player.animate = true;
@@ -92,7 +97,7 @@ public class Movement {
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                objectAll.changeMap(objectAll.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer));
+                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
             }
             player.mImage = player.mRightImage;
             player.mAnimation = player.mRightAnimation;
@@ -101,7 +106,7 @@ public class Movement {
         /**
          * Ruch w dół
          */
-        if (Gdx.input.isKeyPressed (Keys.S)) {
+        if (PlayerController.pressDown()) {
             player.position.y -= Math.round (speed * delta);
             player.animate = true;
             //**********************************************
@@ -114,10 +119,20 @@ public class Movement {
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                objectAll.changeMap(objectAll.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer));
+                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
             }
             player.mImage = player.mDownImage;
             player.mAnimation = player.mDownAnimation;
+        }
+
+        if(Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)){
+            speed = 350f;
+            player.SpeedAnimation = 0.5f;
+        }
+
+        if(PlayerController.pressAttack()){
+            player.setHP(player.getHP() - 1);
+            System.out.println(player.getHP());
         }
     }
 }

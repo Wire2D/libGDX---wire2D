@@ -29,6 +29,11 @@ public class Testy {
                 .getTile ().getProperties ().get ("map", "false", String.class);
     }
 
+    public static String name(TiledMapTileLayer collisionLayer, int x, int y){
+        return collisionLayer.getCell (x, y)
+                .getTile ().getProperties ().get ("name", null, String.class);
+    }
+
     public static boolean isSpawn(TiledMapTileLayer collisionLayer, int x, int y){
         return collisionLayer.getCell (x, y)
                 .getTile ().getProperties ().containsKey ("spawn");
@@ -44,6 +49,16 @@ public class Testy {
     public static String index(TiledMapTileLayer collisionLayer, int x, int y){
         return collisionLayer.getCell (x, y)
                 .getTile ().getProperties ().get ("index", null, String.class);
+    }
+
+    public static boolean isMob(TiledMapTileLayer collisionLayer, int x, int y){
+        return collisionLayer.getCell (x, y)
+                .getTile ().getProperties ().containsKey ("mob");
+    }
+
+    public static String getLevel(TiledMapTileLayer collisionLayer, int x, int y){
+        return collisionLayer.getCell (x, y)
+                .getTile ().getProperties ().get ("level", null, String.class);
     }
 
 

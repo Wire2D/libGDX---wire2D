@@ -28,18 +28,25 @@ public class Resources {
         textureMap = new HashMap<String, Texture> ();
         //sounds = new HashMap<String, Sound> ();
 
-
-        //skrzynki
-        try{
-            textureMap.put ("player",new Texture("core/res/player/adas.png"));
-        } catch (Exception e){
-            textureMap.put ("player",new Texture("res/player/adas.png"));
-        }
+        textureMap.put ("adas",new Texture("res/player/adas.png"));
+        textureMap.put ("alwin",new Texture("res/player/alwin.png"));
+        textureMap.put ("irmina",new Texture("res/player/irmina.png"));
+        textureMap.put ("lili",new Texture("res/player/lili.png"));
+        textureMap.put ("player",new Texture("res/player/player.png"));
+        //Mob
+        textureMap.put ("frog",new Texture("res/mob/mob/frog.png"));
+        textureMap.put ("meduza",new Texture("res/mob/mob/meduza.png"));
+        textureMap.put ("gargulec",new Texture("res/mob/mob/gargulec.png"));
+        textureMap.put ("troll",new Texture("res/mob/mob/troll.png"));
 
     }
 
     public static TextureRegion[][] getTextureRegion(String path){
         return TextureRegion.split (textureMap.get (path), 32, 48);
+    }
+
+    public static TextureRegion[][] getTextureRegion(String path, boolean mob){
+        return TextureRegion.split (textureMap.get (path), 32, 32);
     }
 
     public static Texture getTexture(String path, int x, int y){
