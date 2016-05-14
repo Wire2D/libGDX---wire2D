@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.game.Drop;
 import com.game.GUI.GUI;
-import com.game.ObjectAll;
 import com.game.androidNavigation.Nav;
 import com.game.object.creature.Player;
 import com.game.operations.Attack;
@@ -26,7 +25,6 @@ public class MainGameScreen implements Screen {
     private Movement movement;
     private Player player;
     private Attack attackController;
-    private ObjectAll objectAll;
     private Resources resources;
     private GUI gui;
     private Nav androidNav;
@@ -48,7 +46,6 @@ public class MainGameScreen implements Screen {
         player = new Player("adas");
         movement = new Movement(player);
         attackController = new Attack(player);
-        objectAll = new ObjectAll();
         androidNav = new Nav();
         gui = new GUI();
 
