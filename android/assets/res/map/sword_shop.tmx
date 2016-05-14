@@ -1,7 +1,7 @@
-s<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="32" tileheight="32" nextobjectid="1">
- <tileset firstgid="1" name="chunk" tilewidth="32" tileheight="32" tilecount="25" columns="5">
-  <image source="chunk.png" width="160" height="160"/>
+ <tileset firstgid="1" name="chunk" tilewidth="32" tileheight="32" tilecount="35" columns="5">
+  <image source="chunk.png" width="160" height="224"/>
   <tile id="0">
    <properties>
     <property name="enter" value="true"/>
@@ -34,37 +34,37 @@ s<?xml version="1.0" encoding="UTF-8"?>
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="26" name="base_txt" tilewidth="32" tileheight="32" tilecount="2016" columns="32">
+ <tileset firstgid="36" name="base_txt" tilewidth="32" tileheight="32" tilecount="2016" columns="32">
   <image source="base_txt.png" width="1024" height="2016"/>
  </tileset>
  <layer name="enter_block" width="40" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGP6ACw0zQemBBjD3oLMFsYjRG5BiL73dSI599HIjJfbQw42Uuo+WbsRlNnr+xeeOgXAfvfTT0vyhkPa4qeUQPHYMhF562UGP9Decw3Aw1yGDoQ4WIEEtPQB6fcEIxcTUI6OAPgAAPb26hIAMAAA=
+   H4sIAAAAAAAAC1NlYGBQHeaYCw0zQenB4i50tiAWsYFwGy3U0ttt9HYjJfbQw42Uuo+WbsRlNnr+xeeOgXDfYInf4Z72uAe5+wZz+NHDjZSWD4M9DAdzHTIY6mCBQeI2ZHuRMSMUE1OPjGL6YAAJDp0tgAwAAA==
   </data>
  </layer>
- <layer name="Warstwa Kafelków 1" width="40" height="20" visible="0">
+ <layer name="Warstwa Kafelków 1" width="40" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3QwQnAIBBE0bWhtZOkgvTfRrwMSBLBrDDjYT8MHrw81mw9L2a1vF91cBxt58erdHrnuAbDP9sI28j1HNv4x9YbGXnAhjFuGLkd84ZRG5a+9KVP51sxstrdFzEq2tk248z03SYGsCqADAAA
+   H4sIAAAAAAAAC+3QwQnAIBBE0bWrtZOkgvTfQbwMSBLBrDDjYT8MHrw81mw9L2a1vF91cBxt58erdHrnuAbDP9sI28j1HNv4x9YbGXnAhjFuGLkd84ZRG5a+9KVP51sxstrdFzEq2tk248z03S4byXWADAAA
   </data>
  </layer>
- <layer name="Warstwa Kafelków 2" width="40" height="20" visible="0">
+ <layer name="Warstwa Kafelków 2" width="40" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgoC5YysbAsAyIl7NR2WAqgaNAdx0D4uODzH35bBA8CkbBKCAPlLAMtAuGLqga5GXPrEHuvl1A99Wx094eStL4PDq4bxSMglEwCogFAOu3XDGADAAA
+   H4sIAAAAAAAAC2NgoC5Yz8bAsAGIN7JR2WAqgfNAd10A4ouDzH2VbBA8CkbBKCAP1LEMtAuGLmgZ5GXPkkHuviNA93Ww094eStL4Cjq4bxSMglEwCogFAMHtmGuADAAA
   </data>
  </layer>
- <layer name="Warstwa Kafelków 3" width="40" height="20" visible="0">
+ <layer name="Warstwa Kafelków 3" width="40" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYBSMZKDKysCgBsTqrKjswQJcgW5xA2J3VlQ2Oqhjp7/bSAHzBrn7RsEoGAWjYBSMAnoBAPktsWCADAAA
+   H4sIAAAAAAAAC2NgGAWjYBSMZKDPysBgAMSGrKjswQL8gW4JAOJAVlQ2Ouhgp7/bSAErBrn7RsEoGAWjYBSMAnoBAMcFrlmADAAA
   </data>
  </layer>
- <layer name="Warstwa Kafelków 4" width="40" height="20" visible="0">
+ <layer name="Warstwa Kafelków 4" width="40" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3KoQEAAAQAQck87L+cKOnCXfrwEQC/VW533h8A8N8AR/iBWYAMAAA=
+   H4sIAAAAAAAAC+3KoQEAAAQAQclQ7L+XKOnCXfrwEQC/VW533h8A8N8A8yVor4AMAAA=
   </data>
  </layer>
- <layer name="Warstwa Kafelków 6" width="40" height="20" visible="0">
+ <layer name="Warstwa Kafelków 6" width="40" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+3O0QkAMAhDwczi/kN2gkJtMCrkQX7DBYAgd4v9rXJNcGabbFMbJ/vY7LPPPvu2+hijwrbB92NU2rLGDtuLs9vlAQeZN8VTgAwAAA==
+   H4sIAAAAAAAAC+3O0QkAMAhDwQzk/vN1gkJtMCrkQX7DBYAgd4v9rXJNcGabbFMbJ/vY7LPPPvu2+hijwrbB92NU2rLGDtuLs9vlAQd8VgKPgAwAAA==
   </data>
  </layer>
 </map>
