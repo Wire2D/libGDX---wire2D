@@ -70,6 +70,7 @@ public class Map {
             mob.render(batch);
         }
         batch.end();
+        batch.dispose();
     }
     //end scorpion43
 }
