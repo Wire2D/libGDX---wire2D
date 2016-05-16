@@ -10,7 +10,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.game.object.Base;
 import com.game.operations.Testy;
-import com.game.operations.Testy;
 import com.game.object.klasy.Warrior;
 import com.game.resources.Resources;
 
@@ -139,6 +138,10 @@ public class Mob extends Base {
         return direction;
     }
 
+    /**
+     * Git Git Git wafjdslfjlsadfj
+     * @return
+     */
     /*scorpion43
     sprawdzenie czy mob nie chce uciec z areny  */
     protected boolean checkBoundaries() {
