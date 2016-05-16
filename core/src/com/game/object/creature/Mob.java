@@ -9,6 +9,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.game.object.Base;
+import com.game.object.klasy.Warrior;
 import com.game.operations.Testy;
 import com.game.resources.Resources;
 
@@ -39,7 +40,7 @@ public class Mob extends Base {
     /*end scorpion43*/
 
     public Mob(String name, int x, int y, int level) {
-        super(49,49,45,65,65,45,100);
+        super(new Warrior());
 
         mUpAnimation = new Animation(0.2f, Resources.getTextureRegion (name, true)[3]);
         mDownAnimation = new Animation(0.2f, Resources.getTextureRegion (name, true)[0]);
@@ -63,7 +64,7 @@ public class Mob extends Base {
 
         if (moveTime <= 0) {
             moveTime = MOVE_TIME;
-            changeMobPosition();
+            changeMobPosition(collisionLayer);
         }
 
         //changeMobPosition();
@@ -83,9 +84,16 @@ public class Mob extends Base {
 
     /*scorpion43
     zmina pozycji moba na podstawie kierunku*/
-    protected void changeMobPosition() {
-        if (countToStopMove == 0 || checkBoundaries() || !animate ) {
-            direction = randomDirection();
+    protected void changeMobPosition(TiledMapTileLayer collisionLayer) {
+        boolean ifEnterBoundaries = checkBoundaries(collisionLayer);
+        if (countToStopMove == 0 || ifEnterBoundaries || !animate ) {
+            if (ifEnterBoundaries) {
+                direction = findOppositeDirection(direction);
+            }
+            else {
+                direction = randomDirection();
+            }
+            setAnimationForMob(direction);
             animate = true;
             countToStopMove = countToStopMove_default;
         }
@@ -108,45 +116,76 @@ public class Mob extends Base {
         }
     }
 
+    /**
+     * scorpion 43
+     * funkcja do znajdowania przeciwnego kierunku kiedy mob trafi na granicę
+     * @param direction
+     * @return
+     */
+    protected int findOppositeDirection(int direction) {
+        switch (direction) {
+            case Mob.UP:
+                return Mob.DOWN;
+            case Mob.RIGHT:
+                return Mob.LEFT;
+            case Mob.LEFT:
+                return Mob.RIGHT;
+            case Mob.DOWN:
+                return Mob.UP;
+        }
+
+        return 0;
+    }
+
     /*scorpion43
     wylosowanie kierunku w którym ma się poruszać mob*/
     protected int randomDirection() {
         int direction = MathUtils.random(Mob.UP, Mob.DOWN + 1);
+        return direction;
+    }
+
+    /**
+     * funkcja która usstawia odpowiedni zestaw animacji dla moba
+     * w zależności od kierunku
+     * @param direction
+     */
+    protected void setAnimationForMob(int direction) {
         switch (direction) {
             case Mob.UP:
-                    mImage = mUpImage;
-                    mAnimation = mUpAnimation;
+                mImage = mUpImage;
+                mAnimation = mUpAnimation;
                 break;
             case Mob.RIGHT:
-                    mImage = mRightImage;
-                    mAnimation = mRightAnimation;
+                mImage = mRightImage;
+                mAnimation = mRightAnimation;
                 break;
             case Mob.DOWN:
-                    mImage = mDownImage;
-                    mAnimation = mDownAnimation;
+                mImage = mDownImage;
+                mAnimation = mDownAnimation;
                 break;
             case Mob.LEFT:
-                    mImage = mLeftImage;
-                    mAnimation = mLeftAnimation;
+                mImage = mLeftImage;
+                mAnimation = mLeftAnimation;
                 break;
             default:
                 System.out.println("Nie ma takiego ruchu.");
                 break;
         }
-
-        return direction;
     }
+
 
     /*scorpion43
     sprawdzenie czy mob nie chce uciec z areny  */
-    protected boolean checkBoundaries() {
-//        if (Testy.isBlock(this, ))
-        if (position.x <= 0 || position.x >= Gdx.graphics.getWidth()) {
+    protected boolean checkBoundaries(TiledMapTileLayer collisionLayer) {
+        if (Testy.isBlock(this, collisionLayer)) {
+            return true;
+        }
+        /*if (position.x <= 0 || position.x >= Gdx.graphics.getWidth()) {
             return true;
         }
         if ((position.y <= 0) || (position.y >= Gdx.graphics.getHeight())){
             return true;
-        }
+        }*/
 
         return false;
     }
