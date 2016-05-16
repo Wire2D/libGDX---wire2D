@@ -16,6 +16,7 @@ public class Map {
     public TiledMap mMap;
     public String mName;
     TiledMapRenderer tiledMapRenderer;
+    private TiledMapTileLayer tiledMapTileLayer;
     int[] backgroudLayers;
     public ArrayList<Mob> mMob;
 
@@ -38,13 +39,13 @@ public class Map {
 
         mMob = new ArrayList<Mob> ();
 
-        TiledMapTileLayer TMTL = (TiledMapTileLayer) mMap.getLayers ().get (0);
+        TiledMapTileLayer tiledMapTileLayer = (TiledMapTileLayer) mMap.getLayers ().get (0);
 
         for(int i = 0; i < 40; i++){
             for(int j = 0; j < 20; j++){
-                if(Testy.isMob (TMTL,i,j)){
-                    System.out.println("mobek " + Testy.name(TMTL,i,j) + " level: " + Integer.parseInt (Testy.getLevel (TMTL,i,j)));
-                    mMob.add (new Mob(Testy.name(TMTL,i,j),i,j,Integer.parseInt (Testy.getLevel (TMTL,i,j))));
+                if(Testy.isMob (tiledMapTileLayer,i,j)){
+                    System.out.println("mobek " + Testy.name(tiledMapTileLayer,i,j) + " level: " + Integer.parseInt (Testy.getLevel (tiledMapTileLayer,i,j)));
+                    mMob.add (new Mob(Testy.name(tiledMapTileLayer,i,j),i,j,Integer.parseInt (Testy.getLevel (tiledMapTileLayer,i,j))));
                 }
             }
         }
@@ -67,7 +68,7 @@ public class Map {
         SpriteBatch batch = new SpriteBatch();
         batch.begin();
         for (Mob mob : mMob) {
-            mob.render(batch);
+            mob.render(batch, tiledMapTileLayer);
         }
         batch.end();
     }
