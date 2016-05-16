@@ -73,7 +73,7 @@ public class MainGameScreen implements Screen {
         //Render player
         player.render(game.batch);
         //androidNav.render();
-        GUI.render(game.batch,player.getHP(), player.getmHP());
+        GUI.render(game.batch,player.getHP(), player.getmHP(), attackController.getcSkill());
     }
 
     /**

@@ -17,6 +17,10 @@ public class Attack {
         this.cSkill = 0;
     }
 
+    public int getcSkill() {
+        return cSkill;
+    }
+
     public void update (Base oponent){
         float delta = Gdx.graphics.getDeltaTime ();
 
