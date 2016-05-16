@@ -1,6 +1,7 @@
 package com.game.operations;
 
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.game.object.Base;
 import com.game.object.creature.Player;
 
 /**
@@ -8,7 +9,10 @@ import com.game.object.creature.Player;
  */
 public class Testy {
 
-    public static boolean isBlock(Player player, TiledMapTileLayer collisionLayer){
+    /*
+    * scorpion43 dokonał zmiany parametru funkcji z Player na Baze
+    * */
+    public static boolean isBlock(Base player, TiledMapTileLayer collisionLayer){
         return collisionLayer.getCell (
                 (int) (player.position.x / 32),
                 (int) (player.position.y / 32))

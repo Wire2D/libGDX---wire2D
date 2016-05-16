@@ -16,6 +16,7 @@ public class Map {
     public TiledMap mMap;
     public String mName;
     TiledMapRenderer tiledMapRenderer;
+    TiledMapTileLayer collisionLayer;
     int[] backgroudLayers;
     public ArrayList<Mob> mMob;
 
@@ -49,6 +50,8 @@ public class Map {
             }
         }
 
+        collisionLayer = (TiledMapTileLayer) mMap.getLayers().get(0);
+
     }
 
     /**
@@ -58,16 +61,16 @@ public class Map {
     public void render(OrthographicCamera camera){
         tiledMapRenderer.setView (camera);
         tiledMapRenderer.render (backgroudLayers);
-        renderMobs();
+        renderMobs(collisionLayer);
     }
 
     //begin scorpion43
     //funkcja do renderowania mobow
-    public void renderMobs() {
+    public void renderMobs(TiledMapTileLayer collisionLayer) {
         SpriteBatch batch = new SpriteBatch();
         batch.begin();
         for (Mob mob : mMob) {
-            mob.render(batch);
+            mob.render(batch, collisionLayer);
         }
         batch.end();
         batch.dispose();
