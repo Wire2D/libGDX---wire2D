@@ -1,6 +1,8 @@
 package com.game.object;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.game.object.klasy.Super_Class_Klasy;
@@ -62,7 +64,7 @@ public class Base {
 
     public Base(Super_Class_Klasy klasa) {
         this.klasa = klasa;
-        this.LEVEL = 1;
+        this.LEVEL = 150;
 
         setATT();
         setDEF();
@@ -119,10 +121,14 @@ public class Base {
      * @param oponent
      * @return
      */
-    public String damage(Base oponent){
-        int damage = (int) (((((2*LEVEL) + 10)*Math.pow(250,-1))*(ATT*Math.pow(oponent.DEF,-1))*65 + 2) * modifer(oponent));
+    public String damage(Base oponent, int skill){
+
+
+        int base_power = klasa.getSkillList().get(skill).getPower();
+        String skill_name = klasa.getSkillList().get(skill).getName();
+        int damage = (int) (((((2*LEVEL) + 10)*Math.pow(250,-1))*(ATT*Math.pow(oponent.DEF,-1))*base_power + 2) * modifer(oponent));
         oponent.HP -= damage;
-        System.out.println(damage);
+        System.out.println("Obrażenia '" + skill_name + "' : " + damage);
         return String.valueOf(damage);
     }
 

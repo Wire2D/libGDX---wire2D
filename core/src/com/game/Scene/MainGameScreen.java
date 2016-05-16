@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.game.Drop;
 import com.game.GUI.GUI;
-import com.game.ObjectAll;
 import com.game.androidNavigation.Nav;
 import com.game.object.creature.Player;
+import com.game.operations.Attack;
 import com.game.operations.Movement;
 import com.game.operations.WorldController;
 import com.game.operations.WorldRender;
@@ -24,7 +24,7 @@ public class MainGameScreen implements Screen {
     private WorldRender worldRenderer;
     private Movement movement;
     private Player player;
-    private ObjectAll objectAll;
+    private Attack attackController;
     private Resources resources;
     private GUI gui;
     private Nav androidNav;
@@ -45,7 +45,7 @@ public class MainGameScreen implements Screen {
         resources = new Resources();
         player = new Player("adas");
         movement = new Movement(player);
-        objectAll = new ObjectAll();
+        attackController = new Attack(player);
         androidNav = new Nav();
         gui = new GUI();
 
@@ -66,13 +66,14 @@ public class MainGameScreen implements Screen {
 
         //Update movement
         int aMap = worldRenderer.getWorldController().aMap;
-        movement.update(worldController, (TiledMapTileLayer) worldRenderer.getWorldController().ObjectMap.get(aMap).mMap.getLayers().get(0));                      //objectAll.ObjectMap.get (objectAll.aMap).mMap.getLayers ().get (0));
+        movement.update(worldController, (TiledMapTileLayer) worldRenderer.getWorldController().ObjectMap.get(aMap).mMap.getLayers().get(0));
+        attackController.update(null);
         //Render game screen
         worldRenderer.render ();
         //Render player
         player.render(game.batch);
         //androidNav.render();
-        GUI.render(game.batch,player.getHP(), player.getmHP());
+        GUI.render(game.batch,player.getHP(), player.getmHP(), attackController.getcSkill());
     }
 
     /**
