@@ -5,7 +5,10 @@ import com.badlogic.gdx.Input.Keys;
 import com.game.androidNavigation.Nav;
 
 /**
- * Created by admin on 2016-04-01.
+ * Klasa która nadzoruje który przycisk jest naciskany
+ * przydatna klasa do stworzenia dla gracza mozliwoci
+ * wyboru jakich klawiszy chciał by używać ale to później
+ * Created by Mazek27 on 2016-04-01.
  */
 public class PlayerController {
 

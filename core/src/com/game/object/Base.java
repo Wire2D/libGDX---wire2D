@@ -10,6 +10,8 @@ import com.game.object.klasy.Super_Class_Klasy;
 import java.util.Random;
 
 /**
+ * Podstawowa klasa dla wszystkich postaci w grze
+ * Zawiera wszystkie animacje textury statystyki
  * Created by Mazek27 on 22.03.2016.
  */
 public class Base {

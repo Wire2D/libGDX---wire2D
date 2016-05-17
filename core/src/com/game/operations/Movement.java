@@ -7,6 +7,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.game.object.creature.Player;
 
 /**
+ * Kontroller Ruchu odpowiada za to co dzieje sie w grze
+ * poprzez aktywność gracza
  * Created by Mazek27 on 22.03.2016.
  */
 public class Movement {

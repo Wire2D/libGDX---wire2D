@@ -1,6 +1,7 @@
 package com.game.Settings;
 
 /**
+ * Stałe statyczne
  * Created by Mazek27 on 01.04.2016.
  */
 public class Constants {

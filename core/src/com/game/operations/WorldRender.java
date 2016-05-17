@@ -10,6 +10,7 @@ import com.game.object.Map;
 import java.util.ArrayList;
 
 /**
+ * Klasa odpowiedzialna za rysowania świata
  * Created by Mazek27 on 01.04.2016.
  */
 public class WorldRender implements Disposable {

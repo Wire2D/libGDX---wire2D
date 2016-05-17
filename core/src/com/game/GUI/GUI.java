@@ -3,6 +3,9 @@ package com.game.GUI;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
+ * Główna klasa GUI, odpowiedzialna za render
+ * wszystkich informacji na temat postaci
+ * z którymi gracz nie ma fizycznego kontaktu
  * Created by Mazek27 on 26.03.2016.
  */
 public class GUI {

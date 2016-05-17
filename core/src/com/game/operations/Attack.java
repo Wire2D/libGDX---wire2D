@@ -5,6 +5,7 @@ import com.game.object.Base;
 import com.game.object.creature.Player;
 
 /**
+ * Kontroller użycia skilla jest do poprawy
  * Created by Mazek on 2016-05-14.
  */
 public class Attack {
@@ -26,7 +27,6 @@ public class Attack {
 
         if(oponent == null) {
             if (PlayerController.pressAttack()) {
-                //player.setHP(player.getHP() - 1);
                 player.damage(player, cSkill);
                 System.out.println("Życie : " + player.getHP());
             }
