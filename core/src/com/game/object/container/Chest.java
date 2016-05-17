@@ -5,14 +5,13 @@ import com.badlogic.gdx.math.Vector2;
 import com.game.resources.Resources;
 
 /**
+ * W sumie nie wiem, Uzupełnij to Paweł
  * Created by Khaffel on 25.03.2016.
  */
 public class Chest {
 
-    public Vector2 position;
-    public TextureRegion mImage;
-
-    //public ArrayList<Item> content;
+    private Vector2 position;
+    private TextureRegion mImage;
 
     public Chest(String name) {
 

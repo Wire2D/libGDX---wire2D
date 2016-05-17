@@ -14,7 +14,7 @@ import com.game.operations.Testy;
 import com.game.resources.Resources;
 
 /**
- * Created by Khaffel on 25.03.2016.
+ * Created by scorpion43 on 25.03.2016.
  */
 public class Mob extends Base {
 
@@ -26,8 +26,9 @@ public class Mob extends Base {
     private float moveTime = MOVE_TIME;
 
 
-   /* begin scorpion43
-    kierunki do losowania dla moba*/
+   /**
+    * kierunki do losowania dla moba
+    */
     public static final int UP = 0;
     public static final int RIGHT = 1;
     public static final int DOWN = 2;
@@ -36,8 +37,6 @@ public class Mob extends Base {
     protected int countToStopMove_default = 100;
     protected int countToStopMove = countToStopMove_default;
     protected int direction = 0;
-
-    /*end scorpion43*/
 
     public Mob(String name, int x, int y, int level) {
         super(new Warrior());
@@ -67,7 +66,6 @@ public class Mob extends Base {
             changeMobPosition(collisionLayer);
         }
 
-        //changeMobPosition();
         if(animate){
             stateTime += Gdx.graphics.getDeltaTime();           // #15
             currentFrame = mAnimation.getKeyFrame(stateTime, true);
@@ -75,15 +73,16 @@ public class Mob extends Base {
         } else {
             batch.draw (mImage, position.x - 16, position.y- 5);
         }
-        //update(batch, pos);
     }
 
     private void update(SpriteBatch batch, Vector2 pos){
 
     }
 
-    /*scorpion43
-    zmina pozycji moba na podstawie kierunku*/
+    /**
+     * scorpion43
+     * zmina pozycji moba na podstawie kierunku
+     */
     protected void changeMobPosition(TiledMapTileLayer collisionLayer) {
         boolean ifEnterBoundaries = checkBoundaries(collisionLayer);
         if (countToStopMove == 0 || ifEnterBoundaries || !animate ) {
@@ -137,8 +136,10 @@ public class Mob extends Base {
         return 0;
     }
 
-    /*scorpion43
-    wylosowanie kierunku w którym ma się poruszać mob*/
+    /**
+     * scorpion43
+     * wylosowanie kierunku w którym ma się poruszać mob
+     */
     protected int randomDirection() {
         int direction = MathUtils.random(Mob.UP, Mob.DOWN + 1);
         return direction;
@@ -174,8 +175,9 @@ public class Mob extends Base {
     }
 
 
-    /*scorpion43
-    sprawdzenie czy mob nie chce uciec z areny  */
+    /**
+     * sprawdzenie czy mob nie chce uciec z areny
+     */
     protected boolean checkBoundaries(TiledMapTileLayer collisionLayer) {
         if (Testy.isBlock(this, collisionLayer)) {
             return true;

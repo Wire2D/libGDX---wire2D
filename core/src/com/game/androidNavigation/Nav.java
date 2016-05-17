@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 
 /**
+ * Klasa Do obsługi sterowania na androida
  * Created by Dariusz on 2016-04-01.
  */
 public class Nav {
@@ -23,11 +24,10 @@ public class Nav {
     private ImageButton leftButton;
     private ImageButton rightButton;
     private SpriteBatch batch;
-    private Stage stage;
 
     public Nav() {
         batch = new SpriteBatch();
-        stage = new Stage();
+        Stage stage = new Stage();
 
         upButton = new ImageButton(new Image(new Texture("res/gui/ControllerImage/up2.png")).getDrawable());
         upButton.setBounds(10, 200, 80, 100);

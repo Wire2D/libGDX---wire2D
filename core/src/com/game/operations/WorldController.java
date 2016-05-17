@@ -12,6 +12,7 @@ import com.game.object.creature.Player;
 import java.util.ArrayList;
 
 /**
+ * Zajmuje sie przetrzymywaniem światów
  * Created by Mazek27 on 01.04.2016.
  */
 public class WorldController {

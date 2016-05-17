@@ -5,13 +5,16 @@ import com.game.object.Base;
 import com.game.object.creature.Player;
 
 /**
+ * Metody testowe opierające swoje zadanie
+ * na warstwie kolizji mapy
  * Created by Mazek27 on 23.03.2016.
  */
 public class Testy {
 
-    /*
-    * scorpion43 dokonał zmiany parametru funkcji z Player na Baze
-    * */
+    /**
+     * scorpion43 dokonał zmiany parametru funkcji z Player na Baze
+     * Dobra dobra sprawdz lepiej jak zachowa sie mobek gdy w przejscie wejdzie :D
+     */
     public static boolean isBlock(Base player, TiledMapTileLayer collisionLayer){
         return collisionLayer.getCell (
                 (int) (player.position.x / 32),
