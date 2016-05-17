@@ -13,6 +13,8 @@ import com.game.object.klasy.Warrior;
 import com.game.resources.Resources;
 
 /**
+ * Klasa Playera przydała by sie lekka rozbudowa
+ * o podstawowe funkcje dostepne tylko dla playera
  * Created by Mazek27 on 22.03.2016.
  */
 public class Player extends Base {

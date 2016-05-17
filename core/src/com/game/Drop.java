@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.game.Scene.MainGameScreen;
 
 /**
+ * Bazowa klasa tworząca wszystko :D
  * Created by Mazek27 on 28.03.2016.
  */
 public class Drop extends Game {

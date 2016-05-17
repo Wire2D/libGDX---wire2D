@@ -5,15 +5,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Rectangle;
 
 /**
+ * Pasek SP
  * Created by Mazek27 on 26.03.2016.
  */
 class SpBar {
 
     private NinePatch startingBackground;
-    private NinePatch loadingHealthRed;
     private ShapeRenderer shapeRenderer;
 
     SpBar(){
@@ -22,14 +21,12 @@ class SpBar {
     }
 
     void drawBar(SpriteBatch batch){
-
         batch.end();
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.identity();
-        shapeRenderer.rect(19,669,257,11);
-        shapeRenderer.end();
+            shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+            shapeRenderer.identity();
+            shapeRenderer.rect(19,669,257,11);
+            shapeRenderer.end();
         batch.begin();
-
         startingBackground.draw (batch, 20, 670, 256, 10);
     }
 }

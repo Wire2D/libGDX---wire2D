@@ -7,12 +7,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 /**
- * Created by admin on 2016-05-13.
+ * Pasek Doświadczenia
+ * Created by Mazek on 2016-05-13.
  */
 class ExpBar {
 
     private NinePatch startingBackground;
-    private NinePatch loadingHealthRed;
     private ShapeRenderer shapeRenderer;
 
     ExpBar(){

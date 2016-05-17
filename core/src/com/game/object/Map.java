@@ -10,19 +10,17 @@ import com.game.operations.Testy;
 import java.util.ArrayList;
 
 /**
+ * Klasa zawiera podstawowe informacje na temat mapy
  * Created by Mazek27 on 22.03.2016.
  */
 public class Map {
     public TiledMap mMap;
     public String mName;
-    TiledMapRenderer tiledMapRenderer;
-    int[] backgroudLayers;
-    public ArrayList<Mob> mMob;
+    private TiledMapRenderer tiledMapRenderer;
+    private TiledMapTileLayer collisionLayer;
+    private int[] backgroudLayers;
+    private ArrayList<Mob> mMob;
 
-    /**
-     *
-     * @param nazwa = nazwa mapy
-     */
     public Map (String nazwa) {
 
         this.mName = nazwa;
@@ -48,7 +46,7 @@ public class Map {
                 }
             }
         }
-
+        collisionLayer = (TiledMapTileLayer) mMap.getLayers().get(0);
     }
 
     /**
@@ -58,19 +56,20 @@ public class Map {
     public void render(OrthographicCamera camera){
         tiledMapRenderer.setView (camera);
         tiledMapRenderer.render (backgroudLayers);
-        renderMobs();
+        renderMobs(collisionLayer);
     }
 
-    //begin scorpion43
-    //funkcja do renderowania mobow
-    public void renderMobs() {
+    /**
+     * funkcja do renderowania mobow
+     * @param collisionLayer Warstwa blokowana
+     */
+    private void renderMobs(TiledMapTileLayer collisionLayer) {
         SpriteBatch batch = new SpriteBatch();
         batch.begin();
         for (Mob mob : mMob) {
-            mob.render(batch);
+            mob.render(batch, collisionLayer);
         }
         batch.end();
         batch.dispose();
     }
-    //end scorpion43
 }
