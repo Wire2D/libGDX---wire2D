@@ -23,18 +23,14 @@ public class WorldRender implements Disposable {
         return worldController;
     }
 
-    public WorldRender (WorldController worldController){
+    public WorldRender (WorldController worldController, SpriteBatch batch){
         this.worldController = worldController;
+        this.batch = batch;
         init();
     }
     private void init(){
-        batch = new SpriteBatch ();
-
         camera = new OrthographicCamera (Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT);
         camera.position.set(0 + Constants.VIEWPORT_WIDTH / 2, 0 + Constants.VIEWPORT_HEIGHT / 2, 0);
-
-        System.out.println(Gdx.app.getGraphics().getHeight());
-        System.out.println(Gdx.app.getGraphics().getWidth());
         camera.update ();
     }
 
@@ -48,8 +44,6 @@ public class WorldRender implements Disposable {
     public void resize(int width, int height){
         camera.viewportHeight = (Constants.VIEWPORT_HEIGHT / height) * height;
         camera.viewportWidth = (Constants.VIEWPORT_WIDTH / width) * width;
-//        System.out.println(height);
-//        System.out.println(width);
         camera.update ();
     }
 

@@ -23,12 +23,10 @@ public class GUI {
     }
 
     public static void render(SpriteBatch batch, int aHP, int mHP, int skill){
-        batch.begin();
-        healthBar.drawBar (batch,mHP,aHP);
-        spBar.drawBar (batch);
-        expBar.drawBar(batch);
-        skillBar.render(batch, skill);
-        batch.end();
+        healthBar.render(batch,mHP,aHP);
+        spBar.render(batch);
+        expBar.render(batch);
+        skillBar.render(skill);
     }
 
 }

@@ -12,24 +12,19 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
  */
 class ExpBar {
 
-    private NinePatch startingBackground;
-    private ShapeRenderer shapeRenderer;
+    private NinePatch fillTexture;
+    private NinePatch backTexture;
 
     ExpBar(){
-        startingBackground = new NinePatch (new Texture(Gdx.files.internal ("res/gui/expBar.png")),9,9,9,9);
-        shapeRenderer = new ShapeRenderer();
+        fillTexture = new NinePatch (new Texture (Gdx.files.internal ("res/gui/fill/expBar.png")),9,9,9,9);
+        backTexture = new NinePatch (new Texture (Gdx.files.internal ("res/gui/backgrund/expBar.png")),9,9,9,9);
     }
 
-    void drawBar(SpriteBatch batch){
-
-        batch.end();
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.identity();
-        shapeRenderer.rect(19,654,257,11);
-        shapeRenderer.end();
+    void render(SpriteBatch batch){
         batch.begin();
-
-        startingBackground.draw (batch, 20, 655, 256, 10);
+        backTexture.draw (batch, 19, 654, 258, 12);
+        fillTexture.draw (batch, 20, 655, 256, 10);
+        batch.end();
     }
 
 }
