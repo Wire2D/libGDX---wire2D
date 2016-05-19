@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -29,14 +28,14 @@ public class Mob extends Base {
    /**
     * kierunki do losowania dla moba
     */
-    public static final int UP = 0;
-    public static final int RIGHT = 1;
-    public static final int DOWN = 2;
-    public static final int LEFT = 3;
+    private static final int UP = 0;
+    private static final int RIGHT = 1;
+    private static final int DOWN = 2;
+    private static final int LEFT = 3;
 
-    protected int countToStopMove_default = 100;
-    protected int countToStopMove = countToStopMove_default;
-    protected int direction = 0;
+    private int countToStopMove_default = 100;
+    private int countToStopMove = countToStopMove_default;
+    private int direction = 0;
 
     public Mob(String name, int x, int y, int level) {
         super(new Warrior());
@@ -46,7 +45,6 @@ public class Mob extends Base {
         mRightAnimation = new Animation(0.2f, Resources.getTextureRegion (name, true)[2]);
         mLeftAnimation = new Animation(0.2f, Resources.getTextureRegion (name, true)[1]);
 
-
         mUpImage = Resources.getTextureRegion (name, true)[3][0];
         mDownImage = Resources.getTextureRegion (name, true)[0][0];
         mRightImage = Resources.getTextureRegion (name, true)[2][0];
@@ -54,7 +52,7 @@ public class Mob extends Base {
 
         mImage = mDownImage;
         mAnimation = mUpAnimation;
-        position = new Vector2 (x * 32,y * 32);
+        this.setPosition(x * 32,y * 32);
     }
 
     public void render(SpriteBatch batch, TiledMapTileLayer collisionLayer){
@@ -69,9 +67,9 @@ public class Mob extends Base {
         if(animate){
             stateTime += Gdx.graphics.getDeltaTime();           // #15
             currentFrame = mAnimation.getKeyFrame(stateTime, true);
-            batch.draw (currentFrame,position.x,position.y);
+            batch.draw (currentFrame,getX(),getY());
         } else {
-            batch.draw (mImage, position.x - 16, position.y- 5);
+            batch.draw (mImage, getX() - 16, getY() - 5);
         }
     }
 
@@ -83,7 +81,7 @@ public class Mob extends Base {
      * scorpion43
      * zmina pozycji moba na podstawie kierunku
      */
-    protected void changeMobPosition(TiledMapTileLayer collisionLayer) {
+    private void changeMobPosition(TiledMapTileLayer collisionLayer) {
         boolean ifEnterBoundaries = checkBoundaries(collisionLayer);
         if (countToStopMove == 0 || ifEnterBoundaries || !animate ) {
             if (ifEnterBoundaries) {
@@ -99,19 +97,19 @@ public class Mob extends Base {
         countToStopMove--;
         if (direction == Mob.UP) {
             System.out.println("Do góry");
-            position.y++;
+            setY(getY() + 1);
         }
         else if (direction == Mob.RIGHT) {
             System.out.println("W prawo");
-            position.x++;
+            setX(getX() + 1);
         }
         else if (direction == Mob.DOWN) {
             System.out.println("W dół");
-            position.y--;
+            setY(getY() - 1);
         }
         else if (direction == Mob.LEFT) {
             System.out.println("W lewo");
-            position.x--;
+            setX(getX() - 1);
         }
     }
 

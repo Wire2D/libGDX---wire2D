@@ -2,6 +2,7 @@ package com.game.Scene;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.game.Drop;
@@ -28,6 +29,7 @@ public class MainGameScreen implements Screen {
     private Resources resources;
     private GUI gui;
     private Nav androidNav;
+    FPSLogger fps;
 
     private boolean paused;
 
@@ -48,6 +50,7 @@ public class MainGameScreen implements Screen {
         attackController = new Attack(player);
         androidNav = new Nav();
         gui = new GUI();
+        fps = new FPSLogger();
 
 
         paused = false;
@@ -61,6 +64,7 @@ public class MainGameScreen implements Screen {
     @Override
     public void render (float delta) {
         worldController.update (delta, worldRenderer.getCamera ());
+        fps.log();
         Gdx.gl.glClearColor (0,0,0,0);
         Gdx.gl.glClear (GL20.GL_COLOR_BUFFER_BIT);
 

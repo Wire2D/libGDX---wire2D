@@ -55,7 +55,7 @@ public class WorldController {
             for(int j = 0; j < 20; j++){
                 if(Testy.isSpawn (TMTL,i,j)){
                     if(Testy.index (TMTL,i,j).equals (index)){
-                        player.position.set(i * 32, j * 32);
+                        player.setPosition(i * 32, j * 32);
                         break;
                     }
                 }
