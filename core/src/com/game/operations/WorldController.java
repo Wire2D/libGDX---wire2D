@@ -31,8 +31,8 @@ public class WorldController {
         ObjectMap = new ArrayList<Map> ();
         ObjectMap.add (new Map("shop_place"));
     }
-    public void update (float deltaTime, OrthographicCamera camera) {
-        ObjectMap.get (aMap).render (camera);
+    public void update (float deltaTime, OrthographicCamera camera, Player player) {
+        ObjectMap.get (aMap).render (camera, player);
     }
 
     public void changeMap(ArrayList<Map> objectMap, String index, String name, Player player){

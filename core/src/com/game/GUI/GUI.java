@@ -26,7 +26,7 @@ public class GUI {
         healthBar.render(batch,mHP,aHP);
         spBar.render(batch);
         expBar.render(batch);
-        skillBar.render(skill);
+        skillBar.render(batch,skill);
     }
 
 }
