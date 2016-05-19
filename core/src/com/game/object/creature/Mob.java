@@ -1,12 +1,16 @@
 package com.game.object.creature;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.game.Settings.Constants;
 import com.game.object.Base;
 import com.game.object.klasy.Warrior;
 import com.game.operations.Testy;
@@ -55,7 +59,7 @@ public class Mob extends Base {
         this.setPosition(x * 32,y * 32);
     }
 
-    public void render(SpriteBatch batch, TiledMapTileLayer collisionLayer){
+    public void render(SpriteBatch batch, TiledMapTileLayer collisionLayer, Player player){
         float time = Gdx.graphics.getDeltaTime();
         moveTime -= time;
 
@@ -71,6 +75,8 @@ public class Mob extends Base {
         } else {
             batch.draw (mImage, getX() - 16, getY() - 5);
         }
+
+        dst(player, batch);
     }
 
     private void update(SpriteBatch batch, Vector2 pos){
@@ -188,6 +194,29 @@ public class Mob extends Base {
         }*/
 
         return false;
+    }
+
+    /**
+     * Mazek27
+     * Test odległości
+     */
+    protected void dst(Player player, SpriteBatch batch){
+        Vector2 posMonster = new Vector2(getX(),getY());
+        Vector2 posPlayer = new Vector2(player.getX(),player.getY());
+
+
+        if(posMonster.dst(posPlayer) < 200){
+            batch.end();
+            ShapeRenderer shapeDebugger= new ShapeRenderer();
+            if(Constants.camera != null){
+                shapeDebugger.setProjectionMatrix(Constants.camera.combined);
+            }
+            shapeDebugger.begin(ShapeRenderer.ShapeType.Line);
+            shapeDebugger.setColor(Color.WHITE);
+            shapeDebugger.line(posMonster.x + 16, posMonster.y + 16, posPlayer.x, posPlayer.y);
+            shapeDebugger.end();
+            batch.begin();
+        }
     }
 
 }

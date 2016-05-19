@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.game.object.creature.Mob;
+import com.game.object.creature.Player;
 import com.game.operations.Testy;
 
 import java.util.ArrayList;
@@ -53,21 +54,21 @@ public class Map {
      * Renderuje obraz mapy
      * @param camera = widok
      */
-    public void render(OrthographicCamera camera){
+    public void render(OrthographicCamera camera, Player player){
         tiledMapRenderer.setView (camera);
         tiledMapRenderer.render (backgroudLayers);
-        renderMobs(collisionLayer);
+        renderMobs(collisionLayer, player);
     }
 
     /**
      * funkcja do renderowania mobow
      * @param collisionLayer Warstwa blokowana
      */
-    private void renderMobs(TiledMapTileLayer collisionLayer) {
+    private void renderMobs(TiledMapTileLayer collisionLayer, Player player) {
         SpriteBatch batch = new SpriteBatch();
         batch.begin();
         for (Mob mob : mMob) {
-            mob.render(batch, collisionLayer);
+            mob.render(batch, collisionLayer, player);
         }
         batch.end();
         batch.dispose();

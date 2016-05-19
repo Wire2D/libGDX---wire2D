@@ -39,20 +39,17 @@ public class MainGameScreen implements Screen {
 
 
 
-        if (Gdx.app.getType() == Application.ApplicationType.Android) {
-            Gdx.app.getGraphics().setWindowedMode(100, 100);
-            Gdx.app.getGraphics().setWindowedMode(Gdx.app.getGraphics().getWidth(), Gdx.app.getGraphics().getHeight());
-            //Gdx.app.getGraphics().setFullscreenMode(Gdx.graphics.getDisplayMode());
-        } else {
-            Gdx.graphics.setWindowedMode(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-            Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
-        }
+//        if (Gdx.app.getType() == Application.ApplicationType.Android) {
+//            Gdx.app.getGraphics().setWindowedMode(100, 100);
+//            Gdx.app.getGraphics().setWindowedMode(Gdx.app.getGraphics().getWidth(), Gdx.app.getGraphics().getHeight());
+//            //Gdx.app.getGraphics().setFullscreenMode(Gdx.graphics.getDisplayMode());
+//        } else {
+//            Gdx.graphics.setWindowedMode(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+//            Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
+//        }
 
     }
 
-    /**
-     * Called when this screen becomes the current screen for a {@link Game}.
-     */
     @Override
     public void show () {
         worldController = new WorldController ();
@@ -73,7 +70,7 @@ public class MainGameScreen implements Screen {
      */
     @Override
     public void render (float delta) {
-        worldController.update (delta, worldRenderer.getCamera ());
+        worldController.update (delta, worldRenderer.getCamera (), player);
         fps.log();
         Gdx.gl.glClearColor (0,0,0,0);
         Gdx.gl.glClear (GL20.GL_COLOR_BUFFER_BIT);
@@ -83,7 +80,7 @@ public class MainGameScreen implements Screen {
         movement.update(worldController, (TiledMapTileLayer) worldRenderer.getWorldController().ObjectMap.get(aMap).mMap.getLayers().get(0), game);
         attackController.update(null);
         //Render game screen
-        worldRenderer.render ();
+        worldRenderer.render (player);
         //Render player
         player.render(game.batch);
         //androidNav.render();

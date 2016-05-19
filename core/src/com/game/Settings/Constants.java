@@ -1,6 +1,7 @@
 package com.game.Settings;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 
 /**
  * Stałe statyczne
@@ -14,5 +15,7 @@ public class Constants {
     public static final float VIEWPORT_HEIGHT = 720.0f;
 
     public static Screen gameMainScreen = null;
+
+    public static OrthographicCamera camera;
 
 }

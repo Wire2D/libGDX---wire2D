@@ -1,6 +1,9 @@
 package com.game.GUI;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.*;
@@ -19,6 +22,8 @@ class SkillBar {
 
     private ArrayList<Rectangle> skill_block;
     private ShapeRenderer shapeRenderer;
+    private NinePatch noCheckTexture = new NinePatch (new Texture(Gdx.files.internal ("res/gui/SkillBar/NoCheck.png")),9,9,9,9);
+    private NinePatch checkTexture = new NinePatch (new Texture (Gdx.files.internal ("res/gui/SkillBar/Check.png")),9,9,9,9);
 
     SkillBar(){
         skill_block = new ArrayList<Rectangle>();
@@ -29,20 +34,24 @@ class SkillBar {
         shapeRenderer = new ShapeRenderer();
     }
 
-    void render(int skill){
+    void render(SpriteBatch batch, int skill){
+        batch.begin();
         for(int i=0; i < 10; i++) {
-            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-            if(i == skill){
-                shapeRenderer.setColor(Color.BLUE);
-                shapeRenderer.rect(skill_block.get(i).x,skill_block.get(i).y,skill_block.get(i).width,skill_block.get(i).height);
+            if (i == skill) {
+                checkTexture.draw(batch,
+                        skill_block.get(i).x,
+                        skill_block.get(i).y,
+                        skill_block.get(i).width,
+                        skill_block.get(i).height);
             } else {
-                shapeRenderer.setColor(Color.WHITE);
-                shapeRenderer.rect(skill_block.get(i).x,skill_block.get(i).y,skill_block.get(i).width,skill_block.get(i).height);
+                noCheckTexture.draw(batch,
+                        skill_block.get(i).x,
+                        skill_block.get(i).y,
+                        skill_block.get(i).width,
+                        skill_block.get(i).height);
             }
-            shapeRenderer.setColor(Color.GREEN);
-            shapeRenderer.rect(skill_block.get(i).x + 1,skill_block.get(i).y + 1,skill_block.get(i).width - 2,skill_block.get(i).height - 2);
-            shapeRenderer.end();
         }
+        batch.end();
     }
 
 }

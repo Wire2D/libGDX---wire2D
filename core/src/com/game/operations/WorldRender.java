@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.game.Settings.Constants;
 import com.game.object.Map;
+import com.game.object.creature.Player;
 
 import java.util.ArrayList;
 
@@ -34,10 +35,10 @@ public class WorldRender implements Disposable {
         camera.update ();
     }
 
-    public void render(){
+    public void render(Player player){
         batch.setProjectionMatrix (camera.combined);
         batch.begin ();
-        worldController.update (Gdx.graphics.getDeltaTime (),camera);
+        worldController.update (Gdx.graphics.getDeltaTime (),camera, player);
         batch.end ();
     }
 
