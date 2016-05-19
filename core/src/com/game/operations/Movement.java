@@ -14,12 +14,10 @@ import com.game.object.creature.Player;
 public class Movement {
 
     private Player player;
-    private Vector2 pos;
     private float speed = 250f;
 
     public Movement (Player player) {
         this.player = player;
-        this.pos = player.position;
     }
 
     public void update (WorldController worldController, TiledMapTileLayer collisionLayer) {
@@ -41,13 +39,13 @@ public class Movement {
          * Ruch w góre
          */
         if (PlayerController.pressUp()) {
-            player.position.y += Math.round (speed * delta);
+            player.setY(player.getY() + Math.round (speed * delta));
             player.animate = true;
             //**********************************************
             //Block
             //**********************************************
             if (Testy.isBlock (player,collisionLayer)) {
-                player.position.y -= Math.round (speed * delta);
+                player.setY(player.getY() - Math.round (speed * delta));
             }
             //**********************************************
             //Enter
@@ -63,13 +61,13 @@ public class Movement {
          * Róch w lewo
          */
         if (PlayerController.pressLeft()) {
-            player.position.x -= Math.round (speed * delta);
+            player.setX(player.getX() - Math.round (speed * delta));
             player.animate = true;
             //**********************************************
             //Block
             //**********************************************
             if (Testy.isBlock (player,collisionLayer)) {
-                player.position.x += Math.round (speed * delta);
+                player.setX(player.getX() + Math.round (speed * delta));
             }
             //**********************************************
             //Enter
@@ -86,13 +84,13 @@ public class Movement {
          */
         if (PlayerController.pressRight()) {
 
-            player.position.x += Math.round (speed * delta);
+            player.setX(player.getX() + Math.round (speed * delta));
             player.animate = true;
             //**********************************************
             //Block
             //**********************************************
             if (Testy.isBlock (player,collisionLayer)){
-                player.position.x -= Math.round (speed * delta);
+                player.setX(player.getX() - Math.round (speed * delta));
             }
             //**********************************************
             //Enter
@@ -108,13 +106,13 @@ public class Movement {
          * Ruch w dół
          */
         if (PlayerController.pressDown()) {
-            player.position.y -= Math.round (speed * delta);
+            player.setY(player.getY() - Math.round (speed * delta));
             player.animate = true;
             //**********************************************
             //Block
             //**********************************************
             if (Testy.isBlock (player,collisionLayer)) {
-                player.position.y += Math.round (speed * delta);
+                player.setY(player.getY() + Math.round (speed * delta));
             }
             //**********************************************
             //Enter

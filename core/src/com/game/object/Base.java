@@ -1,10 +1,12 @@
 package com.game.object;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.game.object.klasy.Super_Class_Klasy;
 
 import java.util.Random;
@@ -14,11 +16,8 @@ import java.util.Random;
  * Zawiera wszystkie animacje textury statystyki
  * Created by Mazek27 on 22.03.2016.
  */
-public class Base {
+public class Base extends Actor {
 
-    public Vector2 position;
-    //public Circle punkt;
-    //public Statistics statistics;
     public boolean animate = false;
 
     //Animacje postaci
@@ -63,6 +62,10 @@ public class Base {
     protected int SATT;
     protected int SDEF;
     protected int SPD;
+
+    //Textury animacji
+    private TextureRegion currentFrame;
+    float stateTime;
 
     public Base(Super_Class_Klasy klasa) {
         this.klasa = klasa;
@@ -160,6 +163,18 @@ public class Base {
 
         double ran = STAB * CRITICAL * OTHER * RANDOM;
         return ran;
+    }
+
+    public void render(SpriteBatch batch){
+        batch.begin();
+        if(animate){
+            stateTime += Gdx.graphics.getDeltaTime();           // #15
+            currentFrame = mAnimation.getKeyFrame(stateTime, true);
+            batch.draw (currentFrame,getX() - 16,getY() - 5);
+        } else {
+            batch.draw (mImage, getX() - 16, getY() - 5);
+        }
+        batch.end();
     }
 
 }

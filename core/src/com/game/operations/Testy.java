@@ -17,22 +17,22 @@ public class Testy {
      */
     public static boolean isBlock(Base player, TiledMapTileLayer collisionLayer){
         return collisionLayer.getCell (
-                (int) (player.position.x / 32),
-                (int) (player.position.y / 32))
+                (int) (player.getX() / 32),
+                (int) (player.getY() / 32))
                 .getTile ().getProperties ().containsKey ("blocked");
     }
 
     public static boolean isEnter(Player player, TiledMapTileLayer collisionLayer){
         return collisionLayer.getCell (
-                (int) (player.position.x / 32),
-                (int) (player.position.y / 32))
+                (int) (player.getX() / 32),
+                (int) (player.getY() / 32))
                 .getTile ().getProperties ().containsKey ("enter");
     }
 
     public static String name(Player player, TiledMapTileLayer collisionLayer){
         return collisionLayer.getCell (
-                (int) (player.position.x / 32),
-                (int) (player.position.y / 32))
+                (int) (player.getX() / 32),
+                (int) (player.getY() / 32))
                 .getTile ().getProperties ().get ("map", "false", String.class);
     }
 
@@ -48,8 +48,8 @@ public class Testy {
 
     public static String index(Player player, TiledMapTileLayer collisionLayer){
         return collisionLayer.getCell (
-                (int) (player.position.x / 32),
-                (int) (player.position.y / 32))
+                (int) (player.getX() / 32),
+                (int) (player.getY() / 32))
                 .getTile ().getProperties ().get ("index", null, String.class);
     }
 
