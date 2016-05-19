@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.game.Scene.MainGameScreen;
+import com.game.Settings.Constants;
 
 /**
  * Bazowa klasa tworząca wszystko :D
@@ -14,14 +15,13 @@ public class Drop extends Game {
 
     public SpriteBatch batch;
     public BitmapFont font;
-    public Screen gameScreen;
 
 
     public void create() {
-        gameScreen = new MainGameScreen (this);
+        Constants.gameMainScreen = new MainGameScreen(this);
         batch = new SpriteBatch ();
         font = new BitmapFont ();
-        this.setScreen(gameScreen);
+        this.setScreen(Constants.gameMainScreen);
 
     }
 

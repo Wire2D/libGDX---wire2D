@@ -12,6 +12,11 @@ import com.game.androidNavigation.Nav;
  */
 public class PlayerController {
 
+
+    /**
+     * Klawisze ruchu
+     * @return
+     */
     public static boolean pressUp(){
         return (Gdx.input.isKeyPressed(Keys.W) ||
                 Gdx.input.isKeyPressed(Keys.UP) ||
@@ -39,6 +44,10 @@ public class PlayerController {
                 Nav.rightNavPress);
     }
 
+    /**
+     * Klawisze obsługi skillbaru
+     * @return
+     */
     public static boolean pressAttack(){
         return (Gdx.input.isKeyJustPressed(Keys.SPACE));
     }
@@ -74,6 +83,14 @@ public class PlayerController {
     public static boolean pressSkill_8(){
         return Gdx.input.isKeyJustPressed(Keys.NUM_8);
     }
+
+    /**
+     * Klawisze przejscia do menu
+     */
+    public static boolean pressESC(){
+        return Gdx.input.isKeyJustPressed((Keys.ESCAPE));
+    }
+
 
 
 

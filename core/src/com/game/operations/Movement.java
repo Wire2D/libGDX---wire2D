@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
+import com.game.Drop;
+import com.game.Scene.MainMenuScreen;
 import com.game.object.creature.Player;
 
 /**
@@ -20,7 +22,7 @@ public class Movement {
         this.player = player;
     }
 
-    public void update (WorldController worldController, TiledMapTileLayer collisionLayer) {
+    public void update (WorldController worldController, TiledMapTileLayer collisionLayer, Drop game) {
         float delta = Gdx.graphics.getDeltaTime ();
 
         if(!PlayerController.pressUp() ||
@@ -127,6 +129,10 @@ public class Movement {
         if(Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)){
             speed = 350f;
             player.SpeedAnimation = 0.5f;
+        }
+
+        if(PlayerController.pressESC()){
+            game.setScreen(new MainMenuScreen(game));
         }
 
 

@@ -29,8 +29,7 @@ class SkillBar {
         shapeRenderer = new ShapeRenderer();
     }
 
-    void render(SpriteBatch batch, int skill){
-        batch.end();
+    void render(int skill){
         for(int i=0; i < 10; i++) {
             shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
             if(i == skill){
@@ -44,7 +43,6 @@ class SkillBar {
             shapeRenderer.rect(skill_block.get(i).x + 1,skill_block.get(i).y + 1,skill_block.get(i).width - 2,skill_block.get(i).height - 2);
             shapeRenderer.end();
         }
-        batch.begin();
     }
 
 }

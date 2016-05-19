@@ -36,22 +36,7 @@ public class MainGameScreen implements Screen {
 
     public MainGameScreen (final Drop game) {
         this.game = game;
-    }
 
-    /**
-     * Called when this screen becomes the current screen for a {@link Game}.
-     */
-    @Override
-    public void show () {
-        worldController = new WorldController ();
-        worldRenderer = new WorldRender (worldController);
-        resources = new Resources();
-        player = new Player("adas");
-        movement = new Movement(player);
-        attackController = new Attack(player);
-        androidNav = new Nav();
-        gui = new GUI();
-        fps = new FPSLogger();
 
 
         if (Gdx.app.getType() == Application.ApplicationType.Android) {
@@ -63,9 +48,22 @@ public class MainGameScreen implements Screen {
             Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
         }
 
+    }
 
-
-        paused = false;
+    /**
+     * Called when this screen becomes the current screen for a {@link Game}.
+     */
+    @Override
+    public void show () {
+        worldController = new WorldController ();
+        worldRenderer = new WorldRender (worldController, game.batch);
+        resources = new Resources();
+        player = new Player("adas");
+        movement = new Movement(player);
+        attackController = new Attack(player);
+        androidNav = new Nav();
+        gui = new GUI();
+        fps = new FPSLogger();
     }
 
     /**
@@ -82,7 +80,7 @@ public class MainGameScreen implements Screen {
 
         //Update movement
         int aMap = worldRenderer.getWorldController().aMap;
-        movement.update(worldController, (TiledMapTileLayer) worldRenderer.getWorldController().ObjectMap.get(aMap).mMap.getLayers().get(0));
+        movement.update(worldController, (TiledMapTileLayer) worldRenderer.getWorldController().ObjectMap.get(aMap).mMap.getLayers().get(0), game);
         attackController.update(null);
         //Render game screen
         worldRenderer.render ();
