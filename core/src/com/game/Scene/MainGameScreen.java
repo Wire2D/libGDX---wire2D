@@ -1,5 +1,6 @@
 package com.game.Scene;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.FPSLogger;
@@ -29,7 +30,7 @@ public class MainGameScreen implements Screen {
     private Resources resources;
     private GUI gui;
     private Nav androidNav;
-    FPSLogger fps;
+    private FPSLogger fps;
 
     private boolean paused;
 
@@ -51,6 +52,17 @@ public class MainGameScreen implements Screen {
         androidNav = new Nav();
         gui = new GUI();
         fps = new FPSLogger();
+
+
+        if (Gdx.app.getType() == Application.ApplicationType.Android) {
+            Gdx.app.getGraphics().setWindowedMode(100, 100);
+            Gdx.app.getGraphics().setWindowedMode(Gdx.app.getGraphics().getWidth(), Gdx.app.getGraphics().getHeight());
+            //Gdx.app.getGraphics().setFullscreenMode(Gdx.graphics.getDisplayMode());
+        } else {
+            Gdx.graphics.setWindowedMode(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+            Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
+        }
+
 
 
         paused = false;
@@ -81,9 +93,7 @@ public class MainGameScreen implements Screen {
     }
 
     /**
-     * @param width
-     * @param height
-     * @see ApplicationListener#resize(int, int)
+     * Zmiana wielkosci okna
      */
     @Override
     public void resize (int width, int height) {
@@ -91,7 +101,7 @@ public class MainGameScreen implements Screen {
     }
 
     /**
-     * @see ApplicationListener#pause()
+     * Co dzieje sie po zapałzowaniu gry
      */
     @Override
     public void pause () {
@@ -99,7 +109,7 @@ public class MainGameScreen implements Screen {
     }
 
     /**
-     * @see ApplicationListener#resume()
+     * Co dzieje sie po wznowieniu gry
      */
     @Override
     public void resume () {
@@ -107,7 +117,7 @@ public class MainGameScreen implements Screen {
     }
 
     /**
-     * Called when this screen is no longer the current screen for a {@link Game}.
+     * Co dzieje sie gdy schowam gre do paska
      */
     @Override
     public void hide () {
