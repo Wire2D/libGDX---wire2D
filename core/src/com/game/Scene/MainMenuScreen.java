@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.game.Drop;
+import com.game.Settings.Constants;
 
 /**
  * Created by Mazek27 on 28.03.2016.
@@ -40,8 +41,8 @@ public class MainMenuScreen implements Screen {
         game.font.draw(game.batch, "Tap anywhere to begin!", 100, 100);
         game.batch.end();
 
-        if (Gdx.input.isKeyPressed (Keys.ANY_KEY)) {
-            game.setScreen(game.gameScreen);
+        if (Gdx.input.isKeyJustPressed (Keys.ESCAPE)) {
+            game.setScreen(Constants.gameMainScreen);
             dispose();
         }
     }

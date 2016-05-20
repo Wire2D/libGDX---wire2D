@@ -31,8 +31,8 @@ public class WorldController {
         ObjectMap = new ArrayList<Map> ();
         ObjectMap.add (new Map("shop_place"));
     }
-    public void update (float deltaTime, OrthographicCamera camera) {
-        ObjectMap.get (aMap).render (camera);
+    public void update (float deltaTime, OrthographicCamera camera, Player player) {
+        ObjectMap.get (aMap).render (camera, player);
     }
 
     public void changeMap(ArrayList<Map> objectMap, String index, String name, Player player){
@@ -55,7 +55,7 @@ public class WorldController {
             for(int j = 0; j < 20; j++){
                 if(Testy.isSpawn (TMTL,i,j)){
                     if(Testy.index (TMTL,i,j).equals (index)){
-                        player.position.set(i * 32, j * 32);
+                        player.setPosition(i * 32, j * 32);
                         break;
                     }
                 }
