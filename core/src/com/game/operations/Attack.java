@@ -26,47 +26,55 @@ public class Attack {
         float delta = Gdx.graphics.getDeltaTime ();
 
         if(oponent == null) {
-            if (PlayerController.pressAttack()) {
+            if (InputController.pressAttack()) {
                 player.damage(player, cSkill);
                 System.out.println("Życie : " + player.getHP());
             }
 
-            if (PlayerController.pressSkill_1()){
+            if (InputController.pressSkill_1()){
                 cSkill = 0;
             }
 
-            if (PlayerController.pressSkill_2()){
+            if (InputController.pressSkill_2()){
                 cSkill = 1;
             }
 
-            if (PlayerController.pressSkill_3()){
+            if (InputController.pressSkill_3()){
                 cSkill = 2;
             }
 
-            if (PlayerController.pressSkill_4()){
+            if (InputController.pressSkill_4()){
                 cSkill = 3;
             }
 
-            if (PlayerController.pressSkill_5()){
+            if (InputController.pressSkill_5()){
                 cSkill = 4;
             }
 
-            if (PlayerController.pressSkill_6()){
+            if (InputController.pressSkill_6()){
                 cSkill = 5;
             }
 
-            if (PlayerController.pressSkill_7()){
+            if (InputController.pressSkill_7()){
                 cSkill = 6;
             }
 
-            if (PlayerController.pressSkill_8()){
+            if (InputController.pressSkill_8()){
                 cSkill = 7;
+            }
+
+            if (InputController.pressSkill_9()){
+                cSkill = 8;
+            }
+
+            if (InputController.pressSkill_0()){
+                cSkill = 9;
             }
 
 
         } else {
 
-            if (PlayerController.pressAttack()) {
+            if (InputController.pressAttack()) {
                 player.damage(player, cSkill);
                 System.out.println("Życie : " + player.getHP());
             }

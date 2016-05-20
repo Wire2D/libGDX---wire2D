@@ -102,19 +102,15 @@ public class Mob extends Base {
         }
         countToStopMove--;
         if (direction == Mob.UP) {
-            System.out.println("Do góry");
             setY(getY() + 1);
         }
         else if (direction == Mob.RIGHT) {
-            System.out.println("W prawo");
             setX(getX() + 1);
         }
         else if (direction == Mob.DOWN) {
-            System.out.println("W dół");
             setY(getY() - 1);
         }
         else if (direction == Mob.LEFT) {
-            System.out.println("W lewo");
             setX(getX() - 1);
         }
     }

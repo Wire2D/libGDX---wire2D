@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.game.object.creature.Mob;
 import com.game.object.creature.Player;
 import com.game.operations.Testy;
@@ -21,9 +22,11 @@ public class Map {
     private TiledMapTileLayer collisionLayer;
     private int[] backgroudLayers;
     private ArrayList<Mob> mMob;
+    private Stage stage;
 
     public Map (String nazwa) {
 
+        this.stage = new Stage();
         this.mName = nazwa;
 
             mMap = new TmxMapLoader ().load ("res/map/" + nazwa + ".tmx");
@@ -43,11 +46,17 @@ public class Map {
             for(int j = 0; j < 20; j++){
                 if(Testy.isMob (TMTL,i,j)){
                     System.out.println("mobek " + Testy.name(TMTL,i,j) + " level: " + Integer.parseInt (Testy.getLevel (TMTL,i,j)));
-                    mMob.add (new Mob(Testy.name(TMTL,i,j),i,j,Integer.parseInt (Testy.getLevel (TMTL,i,j))));
+                    Mob mob = new Mob(Testy.name(TMTL, i, j), i, j, Integer.parseInt(Testy.getLevel(TMTL, i, j)));
+                    mMob.add (mob);
+                    stage.addActor(mob);
                 }
             }
         }
         collisionLayer = (TiledMapTileLayer) mMap.getLayers().get(0);
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 
     /**
