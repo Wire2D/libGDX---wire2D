@@ -25,10 +25,10 @@ public class Movement {
     public void update (WorldController worldController, TiledMapTileLayer collisionLayer, Drop game) {
         float delta = Gdx.graphics.getDeltaTime ();
 
-        if(!PlayerController.pressUp() ||
-                !PlayerController.pressDown() ||
-                !PlayerController.pressLeft() ||
-                !PlayerController.pressRight()){
+        if(!InputController.pressUp() ||
+                !InputController.pressDown() ||
+                !InputController.pressLeft() ||
+                !InputController.pressRight()){
             player.animate = false;
         }
 
@@ -40,7 +40,7 @@ public class Movement {
         /**
          * Ruch w góre
          */
-        if (PlayerController.pressUp()) {
+        if (InputController.pressUp()) {
             player.setY(player.getY() + Math.round (speed * delta));
             player.animate = true;
             //**********************************************
@@ -53,7 +53,7 @@ public class Movement {
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer), player);
+                worldController.changeMap(Testy.index(player,collisionLayer),Testy.name(player,collisionLayer), player);
             }
             player.mImage = player.mUpImage;
             player.mAnimation = player.mUpAnimation;
@@ -62,7 +62,7 @@ public class Movement {
         /**
          * Róch w lewo
          */
-        if (PlayerController.pressLeft()) {
+        if (InputController.pressLeft()) {
             player.setX(player.getX() - Math.round (speed * delta));
             player.animate = true;
             //**********************************************
@@ -75,7 +75,7 @@ public class Movement {
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
+                worldController.changeMap(Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
             }
             player.mImage = player.mLeftImage;
             player.mAnimation = player.mLeftAnimation;
@@ -84,7 +84,7 @@ public class Movement {
         /**
          * Ruch w prawo
          */
-        if (PlayerController.pressRight()) {
+        if (InputController.pressRight()) {
 
             player.setX(player.getX() + Math.round (speed * delta));
             player.animate = true;
@@ -98,7 +98,7 @@ public class Movement {
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
+                worldController.changeMap(Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
             }
             player.mImage = player.mRightImage;
             player.mAnimation = player.mRightAnimation;
@@ -107,7 +107,7 @@ public class Movement {
         /**
          * Ruch w dół
          */
-        if (PlayerController.pressDown()) {
+        if (InputController.pressDown()) {
             player.setY(player.getY() - Math.round (speed * delta));
             player.animate = true;
             //**********************************************
@@ -120,7 +120,7 @@ public class Movement {
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
+                worldController.changeMap(Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
             }
             player.mImage = player.mDownImage;
             player.mAnimation = player.mDownAnimation;
@@ -131,7 +131,7 @@ public class Movement {
             player.SpeedAnimation = 0.5f;
         }
 
-        if(PlayerController.pressESC()){
+        if(InputController.pressESC()){
             game.setScreen(new MainMenuScreen(game));
         }
 

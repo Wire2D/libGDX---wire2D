@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class WorldController {
     private static final String TAG = WorldController.class.getName();
     private static String currentMapName;
-    public static ArrayList<Map> ObjectMap;
+    public static ArrayList<Map> objectMap;
     public int aMap;
 
     public WorldController () {
@@ -28,28 +28,29 @@ public class WorldController {
     private void init () {
         aMap = 0;
 
-        ObjectMap = new ArrayList<Map> ();
-        ObjectMap.add (new Map("shop_place"));
+        objectMap = new ArrayList<Map> ();
+        objectMap.add (new Map("shop_place"));
     }
     public void update (float deltaTime, OrthographicCamera camera, Player player) {
-        ObjectMap.get (aMap).render (camera, player);
+        objectMap.get (aMap).render (camera, player);
     }
 
-    public void changeMap(ArrayList<Map> objectMap, String index, String name, Player player){
+    public void changeMap(String index, String name, Player player){
         for(int i = 0 ; i < objectMap.size (); i++){
             if(objectMap.get (i).mName == name){
                 this.aMap = i;
+                objectMap.get(i).getStage().addActor(player);
                 break;
             }
 
             if(i == objectMap.size () -1){
-                ObjectMap.add (new Map(name));
-                this.aMap = ObjectMap.size () - 1;
+                objectMap.add (new Map(name));
+                this.aMap = objectMap.size () - 1;
             }
 
         }
 
-        TiledMapTileLayer TMTL = (TiledMapTileLayer) ObjectMap.get (aMap).mMap.getLayers ().get (0);
+        TiledMapTileLayer TMTL = (TiledMapTileLayer) objectMap.get (aMap).mMap.getLayers ().get (0);
 
         for(int i = 0; i < 40; i++){
             for(int j = 0; j < 20; j++){
