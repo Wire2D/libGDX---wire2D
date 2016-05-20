@@ -59,7 +59,7 @@ public class MainGameScreen implements Screen {
         movement = new Movement(player);
         attackController = new Attack(player);
         androidNav = new Nav();
-        gui = new GUI();
+        gui = new GUI(worldController);
         fps = new FPSLogger();
     }
 
@@ -77,7 +77,7 @@ public class MainGameScreen implements Screen {
 
         //Update movement
         int aMap = worldRenderer.getWorldController().aMap;
-        movement.update(worldController, (TiledMapTileLayer) worldRenderer.getWorldController().ObjectMap.get(aMap).mMap.getLayers().get(0), game);
+        movement.update(worldController, (TiledMapTileLayer) worldRenderer.getWorldController().objectMap.get(aMap).mMap.getLayers().get(0), game);
         attackController.update(null);
         //Render game screen
         worldRenderer.render (player);
