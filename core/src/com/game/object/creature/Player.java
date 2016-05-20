@@ -19,8 +19,7 @@ import com.game.resources.Resources;
  */
 public class Player extends Base {
 
-    private TextureRegion currentFrame;
-    float stateTime;
+
     public float SpeedAnimation = 0.2f;
 
     public Player(String name) {
@@ -38,21 +37,10 @@ public class Player extends Base {
 
         mImage = mUpImage;
         mAnimation = mUpAnimation;
-        position = new Vector2 (100,100);
+        this.setPosition(100,100);
     }
 
-    public void render(SpriteBatch batch){
-        update();
-        batch.begin();
-        if(animate){
-            stateTime += Gdx.graphics.getDeltaTime();           // #15
-            currentFrame = mAnimation.getKeyFrame(stateTime, true);
-            batch.draw (currentFrame,position.x - 16,position.y- 5);
-        } else {
-            batch.draw (mImage, position.x - 16, position.y- 5);
-        }
-        batch.end();
-    }
+
 
     private void update(){
 

@@ -1,6 +1,7 @@
 package com.game.GUI;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.game.operations.WorldController;
 
 /**
  * Główna klasa GUI, odpowiedzialna za render
@@ -15,20 +16,18 @@ public class GUI {
     private static ExpBar expBar;
     private static SkillBar skillBar;
 
-    public GUI(){
+    public GUI(WorldController wC){
         healthBar = new HpBar ();
         spBar = new SpBar ();
         expBar = new ExpBar();
-        skillBar = new SkillBar();
+        skillBar = new SkillBar(wC);
     }
 
     public static void render(SpriteBatch batch, int aHP, int mHP, int skill){
-        batch.begin();
-        healthBar.drawBar (batch,mHP,aHP);
-        spBar.drawBar (batch);
-        expBar.drawBar(batch);
+        healthBar.render(batch,mHP,aHP);
+        spBar.render(batch);
+        expBar.render(batch);
         skillBar.render(batch, skill);
-        batch.end();
     }
 
 }

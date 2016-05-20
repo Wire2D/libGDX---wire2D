@@ -1,7 +1,9 @@
 package com.game.Scene;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.game.Drop;
@@ -28,29 +30,37 @@ public class MainGameScreen implements Screen {
     private Resources resources;
     private GUI gui;
     private Nav androidNav;
+    private FPSLogger fps;
 
     private boolean paused;
 
     public MainGameScreen (final Drop game) {
         this.game = game;
+
+
+
+//        if (Gdx.app.getType() == Application.ApplicationType.Android) {
+//            Gdx.app.getGraphics().setWindowedMode(100, 100);
+//            Gdx.app.getGraphics().setWindowedMode(Gdx.app.getGraphics().getWidth(), Gdx.app.getGraphics().getHeight());
+//            //Gdx.app.getGraphics().setFullscreenMode(Gdx.graphics.getDisplayMode());
+//        } else {
+//            Gdx.graphics.setWindowedMode(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+//            Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
+//        }
+
     }
 
-    /**
-     * Called when this screen becomes the current screen for a {@link Game}.
-     */
     @Override
     public void show () {
         worldController = new WorldController ();
-        worldRenderer = new WorldRender (worldController);
+        worldRenderer = new WorldRender (worldController, game.batch);
         resources = new Resources();
         player = new Player("adas");
         movement = new Movement(player);
         attackController = new Attack(player);
         androidNav = new Nav();
-        gui = new GUI();
-
-
-        paused = false;
+        gui = new GUI(worldController);
+        fps = new FPSLogger();
     }
 
     /**
@@ -60,16 +70,17 @@ public class MainGameScreen implements Screen {
      */
     @Override
     public void render (float delta) {
-        worldController.update (delta, worldRenderer.getCamera ());
+        worldController.update (delta, worldRenderer.getCamera (), player);
+        fps.log();
         Gdx.gl.glClearColor (0,0,0,0);
         Gdx.gl.glClear (GL20.GL_COLOR_BUFFER_BIT);
 
         //Update movement
         int aMap = worldRenderer.getWorldController().aMap;
-        movement.update(worldController, (TiledMapTileLayer) worldRenderer.getWorldController().ObjectMap.get(aMap).mMap.getLayers().get(0));
+        movement.update(worldController, (TiledMapTileLayer) worldRenderer.getWorldController().objectMap.get(aMap).mMap.getLayers().get(0), game);
         attackController.update(null);
         //Render game screen
-        worldRenderer.render ();
+        worldRenderer.render (player);
         //Render player
         player.render(game.batch);
         //androidNav.render();
@@ -77,9 +88,7 @@ public class MainGameScreen implements Screen {
     }
 
     /**
-     * @param width
-     * @param height
-     * @see ApplicationListener#resize(int, int)
+     * Zmiana wielkosci okna
      */
     @Override
     public void resize (int width, int height) {
@@ -87,7 +96,7 @@ public class MainGameScreen implements Screen {
     }
 
     /**
-     * @see ApplicationListener#pause()
+     * Co dzieje sie po zapałzowaniu gry
      */
     @Override
     public void pause () {
@@ -95,7 +104,7 @@ public class MainGameScreen implements Screen {
     }
 
     /**
-     * @see ApplicationListener#resume()
+     * Co dzieje sie po wznowieniu gry
      */
     @Override
     public void resume () {
@@ -103,7 +112,7 @@ public class MainGameScreen implements Screen {
     }
 
     /**
-     * Called when this screen is no longer the current screen for a {@link Game}.
+     * Co dzieje sie gdy schowam gre do paska
      */
     @Override
     public void hide () {

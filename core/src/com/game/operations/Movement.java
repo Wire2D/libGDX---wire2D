@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
+import com.game.Drop;
+import com.game.Scene.MainMenuScreen;
 import com.game.object.creature.Player;
 
 /**
@@ -14,21 +16,19 @@ import com.game.object.creature.Player;
 public class Movement {
 
     private Player player;
-    private Vector2 pos;
     private float speed = 250f;
 
     public Movement (Player player) {
         this.player = player;
-        this.pos = player.position;
     }
 
-    public void update (WorldController worldController, TiledMapTileLayer collisionLayer) {
+    public void update (WorldController worldController, TiledMapTileLayer collisionLayer, Drop game) {
         float delta = Gdx.graphics.getDeltaTime ();
 
-        if(!PlayerController.pressUp() ||
-                !PlayerController.pressDown() ||
-                !PlayerController.pressLeft() ||
-                !PlayerController.pressRight()){
+        if(!InputController.pressUp() ||
+                !InputController.pressDown() ||
+                !InputController.pressLeft() ||
+                !InputController.pressRight()){
             player.animate = false;
         }
 
@@ -40,20 +40,20 @@ public class Movement {
         /**
          * Ruch w góre
          */
-        if (PlayerController.pressUp()) {
-            player.position.y += Math.round (speed * delta);
+        if (InputController.pressUp()) {
+            player.setY(player.getY() + Math.round (speed * delta));
             player.animate = true;
             //**********************************************
             //Block
             //**********************************************
             if (Testy.isBlock (player,collisionLayer)) {
-                player.position.y -= Math.round (speed * delta);
+                player.setY(player.getY() - Math.round (speed * delta));
             }
             //**********************************************
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer), player);
+                worldController.changeMap(Testy.index(player,collisionLayer),Testy.name(player,collisionLayer), player);
             }
             player.mImage = player.mUpImage;
             player.mAnimation = player.mUpAnimation;
@@ -62,20 +62,20 @@ public class Movement {
         /**
          * Róch w lewo
          */
-        if (PlayerController.pressLeft()) {
-            player.position.x -= Math.round (speed * delta);
+        if (InputController.pressLeft()) {
+            player.setX(player.getX() - Math.round (speed * delta));
             player.animate = true;
             //**********************************************
             //Block
             //**********************************************
             if (Testy.isBlock (player,collisionLayer)) {
-                player.position.x += Math.round (speed * delta);
+                player.setX(player.getX() + Math.round (speed * delta));
             }
             //**********************************************
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
+                worldController.changeMap(Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
             }
             player.mImage = player.mLeftImage;
             player.mAnimation = player.mLeftAnimation;
@@ -84,21 +84,21 @@ public class Movement {
         /**
          * Ruch w prawo
          */
-        if (PlayerController.pressRight()) {
+        if (InputController.pressRight()) {
 
-            player.position.x += Math.round (speed * delta);
+            player.setX(player.getX() + Math.round (speed * delta));
             player.animate = true;
             //**********************************************
             //Block
             //**********************************************
             if (Testy.isBlock (player,collisionLayer)){
-                player.position.x -= Math.round (speed * delta);
+                player.setX(player.getX() - Math.round (speed * delta));
             }
             //**********************************************
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
+                worldController.changeMap(Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
             }
             player.mImage = player.mRightImage;
             player.mAnimation = player.mRightAnimation;
@@ -107,20 +107,20 @@ public class Movement {
         /**
          * Ruch w dół
          */
-        if (PlayerController.pressDown()) {
-            player.position.y -= Math.round (speed * delta);
+        if (InputController.pressDown()) {
+            player.setY(player.getY() - Math.round (speed * delta));
             player.animate = true;
             //**********************************************
             //Block
             //**********************************************
             if (Testy.isBlock (player,collisionLayer)) {
-                player.position.y += Math.round (speed * delta);
+                player.setY(player.getY() + Math.round (speed * delta));
             }
             //**********************************************
             //Enter
             //**********************************************
             if (Testy.isEnter (player,collisionLayer)){
-                worldController.changeMap(worldController.ObjectMap,Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
+                worldController.changeMap(Testy.index(player,collisionLayer),Testy.name(player,collisionLayer) ,player);
             }
             player.mImage = player.mDownImage;
             player.mAnimation = player.mDownAnimation;
@@ -129,6 +129,10 @@ public class Movement {
         if(Gdx.input.isKeyPressed(Keys.SHIFT_LEFT)){
             speed = 350f;
             player.SpeedAnimation = 0.5f;
+        }
+
+        if(InputController.pressESC()){
+            game.setScreen(new MainMenuScreen(game));
         }
 
 
