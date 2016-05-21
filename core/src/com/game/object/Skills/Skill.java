@@ -7,16 +7,26 @@ package com.game.object.Skills;
  */
 public class Skill {
 
+    private int id;
     private String name;
     private int power_point;
     private int power;
     private int duration;
 
-    public Skill(String name, int power_point, int power, int duration) {
+    public Skill(int id, String name, int power_point, int power, int duration) {
+        this.id = id;
         this.name = name;
         this.power_point = power_point;
         this.power = power;
         this.duration = duration;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getDuration() {
+        return duration;
     }
 
     public String getName() {
