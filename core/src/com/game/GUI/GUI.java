@@ -1,6 +1,7 @@
 package com.game.GUI;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.game.operations.WorldController;
 
 /**
@@ -20,6 +21,7 @@ public class GUI {
         healthBar = new HpBar ();
         spBar = new SpBar ();
         expBar = new ExpBar();
+        new UI(new Stage());
         skillBar = new SkillBar(wC);
     }
 
@@ -27,7 +29,8 @@ public class GUI {
         healthBar.render(batch,mHP,aHP);
         spBar.render(batch);
         expBar.render(batch);
-        skillBar.render(batch, skill);
+        UI.getUI_stage().draw();
+        //skillBar.render(batch, skill);
     }
 
 }

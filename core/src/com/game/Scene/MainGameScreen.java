@@ -30,7 +30,6 @@ public class MainGameScreen implements Screen {
     private Resources resources;
     private GUI gui;
     private Nav androidNav;
-    private FPSLogger fps;
 
     private boolean paused;
 
@@ -52,15 +51,14 @@ public class MainGameScreen implements Screen {
 
     @Override
     public void show () {
+        resources = new Resources();
         worldController = new WorldController ();
         worldRenderer = new WorldRender (worldController, game.batch);
-        resources = new Resources();
         player = new Player("adas");
         movement = new Movement(player);
         attackController = new Attack(player);
         androidNav = new Nav();
         gui = new GUI(worldController);
-        fps = new FPSLogger();
     }
 
     /**
@@ -71,7 +69,6 @@ public class MainGameScreen implements Screen {
     @Override
     public void render (float delta) {
         worldController.update (delta, worldRenderer.getCamera (), player);
-        fps.log();
         Gdx.gl.glClearColor (0,0,0,0);
         Gdx.gl.glClear (GL20.GL_COLOR_BUFFER_BIT);
 
