@@ -98,4 +98,8 @@ public class InputController {
         return Gdx.input.isKeyJustPressed((Input.Keys.ESCAPE));
     }
 
+    public static boolean openSkillWindow(){
+        return Gdx.input.isKeyJustPressed(Input.Keys.K);
+    }
+
 }

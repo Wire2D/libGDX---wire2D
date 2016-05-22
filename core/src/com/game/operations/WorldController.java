@@ -2,12 +2,9 @@ package com.game.operations;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.game.GUI.UI;
+import com.game.GUI.GUI;
+import com.game.GUI.SkillBar;
 import com.game.object.Map;
 import com.game.object.creature.Player;
 
@@ -50,7 +47,7 @@ public class WorldController {
             aMap = 2;
         }
 
-        Gdx.input.setInputProcessor(UI.getUI_stage());
+        Gdx.input.setInputProcessor(GUI.getGUI_stage());
 
         TiledMapTileLayer TMTL = (TiledMapTileLayer) objectMap.get (aMap).mMap.getLayers ().get (0);
 

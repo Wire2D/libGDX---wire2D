@@ -1,7 +1,10 @@
 package com.game.GUI;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.game.object.Skills.SkillWindow;
+import com.game.object.creature.Player;
 import com.game.operations.WorldController;
 
 /**
@@ -12,25 +15,33 @@ import com.game.operations.WorldController;
  */
 public class GUI {
 
+    private static Stage GUI_stage;
+
     private static HpBar healthBar;
     private static SpBar spBar;
     private static ExpBar expBar;
     private static SkillBar skillBar;
 
-    public GUI(WorldController wC){
+    public GUI(Stage gui_stage, Player player){
+        this.GUI_stage = gui_stage;
         healthBar = new HpBar ();
         spBar = new SpBar ();
         expBar = new ExpBar();
-        new UI(new Stage());
-        skillBar = new SkillBar(wC);
+        skillBar = new SkillBar(player);
+        //new SkillWindow(player.getKlasa());
     }
 
-    public static void render(SpriteBatch batch, int aHP, int mHP, int skill){
+    public static void render(SpriteBatch batch, int aHP, int mHP, int skill, Player player){
         healthBar.render(batch,mHP,aHP);
         spBar.render(batch);
         expBar.render(batch);
-        UI.getUI_stage().draw();
+        skillBar.render(batch, skill);
+        GUI_stage.draw();
         //skillBar.render(batch, skill);
+    }
+
+    public static Stage getGUI_stage() {
+        return GUI_stage;
     }
 
 }

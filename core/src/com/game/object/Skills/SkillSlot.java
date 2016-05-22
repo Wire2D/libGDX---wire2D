@@ -9,21 +9,16 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 public class SkillSlot{
 
     private int id;
-    private Actor emptySlot;
-    private Image imageEmptySlot;
-    private int chooseSkill;
-    private Actor imageSkill;
+    private Image imageSkill;
 
-    public SkillSlot(int id, Actor emptySlot, Image imageEmptySlot) {
+    public SkillSlot(int id, Actor slot, Image image) {
         this.id = id;
-        this.emptySlot = emptySlot;
-        this.imageEmptySlot = imageEmptySlot;
-
-        this.imageEmptySlot.setBounds(
-                emptySlot.getX(),
-                emptySlot.getY(),
-                emptySlot.getWidth(),
-                emptySlot.getHeight()
+        this.imageSkill = image;
+        this.imageSkill.setBounds(
+                slot.getX(),
+                slot.getY(),
+                slot.getWidth(),
+                slot.getHeight()
         );
     }
 
@@ -35,35 +30,11 @@ public class SkillSlot{
         this.id = id;
     }
 
-    public Actor getEmptySlot() {
-        return emptySlot;
-    }
-
-    public void setEmptySlot(Actor emptySlot) {
-        this.emptySlot = emptySlot;
-    }
-
-    public Image getImageEmptySlot() {
-        return imageEmptySlot;
-    }
-
-    public void setImageEmptySlot(Image imageEmptySlot) {
-        this.imageEmptySlot = imageEmptySlot;
-    }
-
-    public int getChooseSkill() {
-        return chooseSkill;
-    }
-
-    public void setChooseSkill(int chooseSkill) {
-        this.chooseSkill = chooseSkill;
-    }
-
-    public Actor getImageSkill() {
+    public Image getImageSkill() {
         return imageSkill;
     }
 
-    public void setImageSkill(Actor imageSkill) {
+    public void setImageSkill(Image imageSkill) {
         this.imageSkill = imageSkill;
     }
 }

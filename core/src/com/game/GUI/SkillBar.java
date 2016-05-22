@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -18,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.*;
 import com.game.object.Skills.SkillSlot;
+import com.game.object.creature.Player;
 import com.game.operations.WorldController;
 
 import java.util.ArrayList;
@@ -29,124 +31,114 @@ import java.util.ArrayList;
  * za pomocą klawiszy od 1 do 0
  * Created by Mazek on 2016-05-16.
  */
-class SkillBar {
+public class SkillBar {
 
-    ArrayList<Actor> sourceActor;
-    ArrayList<SkillSlot> validActor;
-    ArrayList<Actor> invalidActor;
+    class Cell{
+        Rectangle rectangle;
+        Actor actor;
 
-    WorldController worldController;
+        public Cell(Rectangle rectangle, Actor actor) {
+            this.rectangle = rectangle;
+            this.actor = actor;
+        }
+    }
 
+    public static DragAndDrop dragAndDrop = new DragAndDrop();
 
+    private ArrayList<Cell> skill_block;
     private NinePatch noCheckTexture = new NinePatch (new Texture(Gdx.files.internal ("res/gui/SkillBar/NoCheck.png")),9,9,9,9);
     private NinePatch checkTexture = new NinePatch (new Texture (Gdx.files.internal ("res/gui/SkillBar/Check.png")),9,9,9,9);
+    public static ArrayList<SkillSlot> validActor;
+    public static Player player;
+    ArrayList<Actor> invalidActor;
 
-    SkillBar(WorldController wC){
-        this.worldController = wC;
+    public SkillBar(Player player) {
+        skill_block = new ArrayList<Cell>();
+        for(int i=0; i < 10; i++){
+            Rectangle e = new Rectangle(390 + (i*50), 0, 50, 50);
+            Actor actor = new Actor();
+            skill_block.add(new Cell(e, actor));
+            //GUI.getGUI_stage().addActor(actor);
+        }
+
+        this.player = player;
 
         final Skin skin = new Skin();
         skin.add("default", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         skin.add("Slot", new Texture("res/gui/SkillBar/NoCheck.png"));
         skin.add("badlogic", new Texture("badlogic.jpg"));
 
-        DragAndDrop dragAndDrop = new DragAndDrop();
         validActor = new ArrayList<SkillSlot>();
         invalidActor = new ArrayList<Actor>();
-        sourceActor = new ArrayList<Actor>();
 
-        for(int i = 0; i < 10; i++){
-
-            final Actor emptySlot = new Actor();
-            emptySlot.setBounds(390 + (i*50), 0, 50, 50);
-            SkillSlot slot = new SkillSlot(i, emptySlot,new Image(skin, "Slot"));
-            worldController.objectMap.
-                    get(0).addActor(slot.getImageEmptySlot());
-            worldController.objectMap.
-                    get(1).addActor(slot.getImageEmptySlot());
-            worldController.objectMap.
-                    get(2).addActor(slot.getImageEmptySlot());
-            dragAndDrop.addTarget(createTarget(slot, true));
+        for(int i = 0; i < 8; i++){
+            final Actor slotActor = new Actor();
+            slotActor.setBounds(390 + (i*50) + 2, 0 + 2, 46, 46);
+            SkillSlot slot = new SkillSlot(i, slotActor, player.getKlasa().getSkillList().get(i).getPicture());
+            Image image = slot.getImageSkill();
+            image.setName(String.valueOf(slot.getId()));
+            GUI.getGUI_stage().addActor(slot.getImageSkill());
+            dragAndDrop.addTarget(createTarget(slot, true, player));
             validActor.add(slot);
         }
-
-        final Image sourceImage1 = new Image(skin, "badlogic");
-        sourceImage1.setBounds(50, 125, 50, 50);
-        worldController.objectMap.
-                get(worldController.aMap).addActor(sourceImage1);
-        sourceActor.add(sourceImage1);
-
-        dragAndDrop.addSource(createSource(sourceImage1, skin));
-
-        Image sourceImage2 = new Image(skin, "badlogic");
-        sourceImage2.setBounds(125, 125, 50, 50);
-        worldController.objectMap.
-                get(worldController.aMap).addActor(sourceImage2);
-        sourceActor.add(sourceImage2);
-
-        dragAndDrop.addSource(createSource(sourceImage2, skin));
-
-//        skill_block = new ArrayList<Cell>();
-//        for(int i=0; i < 10; i++){
-//            Rectangle e = new Rectangle(390 + (i*50), 0, 50, 50);
-//            Actor actor = new Actor();
-//            skill_block.add(new Cell(e, actor));
-//            wC.objectMap.get(wC.aMap).getStage().addActor(actor);
-//        }
     }
 
-    void render(SpriteBatch batch, int skill){
+    public void render(SpriteBatch batch, int skill){
         batch.begin();
-        //Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        //worldController.objectMap.get(worldController.aMap).act(Gdx.graphics.getDeltaTime());
-        worldController.objectMap.get(worldController.aMap).draw();
+        for(int i=0; i < 10; i++) {
+            if (i == skill) {
+                checkTexture.draw(batch,
+                        skill_block.get(i).rectangle.x,
+                        skill_block.get(i).rectangle.y,
+                        skill_block.get(i).rectangle.width,
+                        skill_block.get(i).rectangle.height);
+            } else {
+                noCheckTexture.draw(batch,
+                        skill_block.get(i).rectangle.x,
+                        skill_block.get(i).rectangle.y,
+                        skill_block.get(i).rectangle.width,
+                        skill_block.get(i).rectangle.height);
+            }
+        }
         batch.end();
     }
 
-
-    private Target createTarget(SkillSlot skillSlot, final boolean valid){
-        final Image target = skillSlot.getImageEmptySlot();
-        return new Target(target) {
+    public static Target createTarget(final SkillSlot skillSlot, final boolean valid, Player player){
+        final Target target = new Target(skillSlot.getImageSkill()) {
             @Override
             public void reset(Source source, Payload payload) {
-                super.reset(source, payload);
+                getActor().setColor(Color.valueOf("ffffffff"));
             }
 
             @Override
             public boolean drag(Source source, Payload payload, float x, float y, int pointer) {
-                payload.getValidDragActor().setColor(Color.GREEN);
+                getActor().setColor(Color.GREEN);
                 return valid;
             }
 
             @Override
             public void drop(Source source, Payload payload, float x, float y, int pointer) {
-
-                source.getActor().setPosition(target.getX(),target.getY());
-                target.setPosition(-50,-50);
+                getActor().remove();
+                source.getActor().setPosition(getActor().getX(),getActor().getY());
             }
         };
+        return target;
     }
 
-    private Source createSource(final Actor source, final Skin skin){
+    public static Source createSource(final Actor source, final Skin skin){
         return new Source(source) {
             @Override
             public void dragStop(InputEvent event, float x, float y, int pointer, Payload payload, Target target) {
                 if (target == null) {
-                    Actor actor = (Actor) payload.getObject();
+                    Image actor = (Image) payload.getObject();
+                    System.out.println(actor.getName());
                     actor.setPosition(50, 125);
-
-                    System.out.println(pointer);
-
-                    for (int i = 0; i < validActor.size(); i++) {
-                        if ((validActor.get(i).getEmptySlot().getX() != validActor.get(i).getImageEmptySlot().getX()) &&
-                                (validActor.get(i).getEmptySlot().getY() != validActor.get(i).getImageEmptySlot().getY())) {
-                            validActor.get(i).getImageEmptySlot().setPosition(
-                                    validActor.get(i).getEmptySlot().getX(),
-                                    validActor.get(i).getEmptySlot().getY()
-                            );
-                        }
-                    }
+                } else {
+                    payload.setObject(player.getKlasa().getSkillList().get(Integer.parseInt(source.getName())).getPicture());
                 }
             }
+
+
 
             public Payload dragStart (InputEvent event, float x, float y, int pointer) {
                 Payload payload = new Payload();
