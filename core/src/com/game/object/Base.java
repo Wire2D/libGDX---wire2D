@@ -80,6 +80,10 @@ public class Base extends Actor {
         setSPD();
     }
 
+    public Super_Class_Klasy getKlasa() {
+        return klasa;
+    }
+
     public void setATT() {
         this.ATT = (int)(((((klasa.ATT_BASE + VI_ATT) * 2) + (Math.sqrt(EV_ATT)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1)) + 5;
     }

@@ -1,5 +1,10 @@
 package com.game.object.Skills;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.NinePatch;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+
 /**
  * Klasa podstawowa Skilli
  * zawiera informacje danego skilla
@@ -7,16 +12,41 @@ package com.game.object.Skills;
  */
 public class Skill {
 
+    private int id;
     private String name;
     private int power_point;
     private int power;
     private int duration;
+    private Image picture;
 
-    public Skill(String name, int power_point, int power, int duration) {
+    public Skill(int id, String name, int power_point, int power, int duration, String URL, int klasa) {
+        this.id = id;
         this.name = name;
         this.power_point = power_point;
         this.power = power;
         this.duration = duration;
+        switch(klasa){
+            case 1:{
+                this.picture = new Image(new Texture(Gdx.files.internal ("res/player/Skill/Warrior/" + URL + ".png")));
+                break;
+            }
+            case 2:{
+                this.picture = new Image(new Texture(Gdx.files.internal ("res/player/Skill/Mage/" + URL + ".png")));
+                break;
+            }
+            case 3:{
+                this.picture = new Image(new Texture(Gdx.files.internal ("res/player/Skill/Hunter/" + URL + ".png")));
+                break;
+            }
+        }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getDuration() {
+        return duration;
     }
 
     public String getName() {
@@ -29,5 +59,9 @@ public class Skill {
 
     public int getPower() {
         return power;
+    }
+
+    public Image getPicture() {
+        return picture;
     }
 }
