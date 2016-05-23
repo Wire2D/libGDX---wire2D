@@ -80,6 +80,7 @@ public class SkillBar {
             GUI.getGUI_stage().addActor(slot.getImageSkill());
             dragAndDrop.addTarget(createTarget(slot, true, player));
             validActor.add(slot);
+            //!!!!
         }
     }
 
