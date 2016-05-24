@@ -137,15 +137,15 @@ public class Movement {
             game.setScreen(new MainMenuScreen(game));
         }
 
-//        if(InputController.openSkillWindow()){
-//            if(!open){
-//                SkillWindow.addSource();
-//                open = true;
-//            } else {
-//                SkillWindow.removeSource();
-//                open = false;
-//            }
-//        }
+        if(InputController.openSkillWindow()){
+            if(!open){
+                SkillWindow.addSource();
+                open = true;
+            } else {
+                SkillWindow.removeSource();
+                open = false;
+            }
+        }
 
 
     }

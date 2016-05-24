@@ -28,7 +28,7 @@ public class GUI {
         spBar = new SpBar ();
         expBar = new ExpBar();
         skillBar = new SkillBar(player);
-        //new SkillWindow(player.getKlasa());
+        new SkillWindow(player.getKlasa());
     }
 
     public static void render(SpriteBatch batch, int aHP, int mHP, int skill, Player player){
