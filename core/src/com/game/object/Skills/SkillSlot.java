@@ -1,12 +1,14 @@
 package com.game.object.Skills;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 /**
  * Created by Mazek on 2016-05-21.
  */
-public class SkillSlot{
+public class SkillSlot extends Actor{
 
     private int id;
     private Image imageSkill;

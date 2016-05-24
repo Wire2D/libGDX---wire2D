@@ -17,7 +17,9 @@ public class Skill {
     private int power_point;
     private int power;
     private int duration;
+    private String nameskill;
     private Image picture;
+
 
     public Skill(int id, String name, int power_point, int power, int duration, String URL, int klasa) {
         this.id = id;
@@ -25,6 +27,7 @@ public class Skill {
         this.power_point = power_point;
         this.power = power;
         this.duration = duration;
+        this.nameskill = URL;
         switch(klasa){
             case 1:{
                 this.picture = new Image(new Texture(Gdx.files.internal ("res/player/Skill/Warrior/" + URL + ".png")));
@@ -63,5 +66,9 @@ public class Skill {
 
     public Image getPicture() {
         return picture;
+    }
+
+    public String getNameskill() {
+        return nameskill;
     }
 }
