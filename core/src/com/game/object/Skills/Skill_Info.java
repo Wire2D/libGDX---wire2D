@@ -3,9 +3,12 @@ package com.game.object.Skills;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 
 /**
  * Created by Mazek on 2016-05-24.
@@ -25,7 +28,10 @@ public class Skill_Info extends Group {
 
     Label opis;
 
+    int skillId;
+
     public Skill_Info(Skill skill) {
+        skillId = skill.getId();
         skillImage = new Image(new Texture("res/player/Skill/Warrior/"+ skill.getNameskill() +".png"));
         skillImage.setName(String.valueOf(skill.getId()));
         backgroundImage = new Image(new Texture("res/gui/SkillWindow/border.jpg"));
@@ -65,8 +71,6 @@ public class Skill_Info extends Group {
 
         opis.setBounds(5,5, 195, 195);
 
-
-
         addActor(backgroundImage);
         addActor(skillImage);
         addActor(skillName);
@@ -86,5 +90,9 @@ public class Skill_Info extends Group {
 
     public Image getSkillImage() {
         return skillImage;
+    }
+
+    public int getSkillId() {
+        return skillId;
     }
 }
