@@ -3,6 +3,7 @@ package com.game.GUI;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.game.Inventory.InventoryUI;
 import com.game.object.Skills.SkillWindow;
 import com.game.object.creature.Player;
 import com.game.operations.WorldController;
@@ -29,6 +30,7 @@ public class GUI {
         expBar = new ExpBar();
         skillBar = new SkillBar(player);
         new SkillWindow(player.getKlasa());
+        new InventoryUI();
     }
 
     public static void render(SpriteBatch batch, int aHP, int mHP, int skill, Player player){

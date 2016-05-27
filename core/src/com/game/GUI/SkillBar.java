@@ -61,7 +61,7 @@ public class SkillBar {
 
         for(int i = 0; i < 8; i++){
             final Actor slotActor = new Actor();
-            slotActor.setBounds(390 + (i*50), 0, 46, 46);
+            slotActor.setBounds(390 + (i*50) + 2, 2, 46, 46);
             SkillSlot slot = new SkillSlot(i, slotActor, player.getKlasa().getSkillList().get(i).getPicture());
             Image image = slot.getImageSkill();
             image.setName(String.valueOf(slot.getId()));

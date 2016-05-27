@@ -20,6 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.SnapshotArray;
 import com.game.GUI.GUI;
 import com.game.GUI.SkillBar;
 import com.game.object.klasy.Super_Class_Klasy;
@@ -33,52 +34,56 @@ public class SkillWindow {
 
     private static Stage skillWindow = GUI.getGUI_stage();
     private static ArrayList<Skill_Info> cell_Skill = new ArrayList<Skill_Info>();
-    private static ArrayList<Skill> skills;
-//    private static Group widget;
-//    private static ScrollPane scrollPane;
+    private static Group cellGroup = new Group();
 
     public SkillWindow(Super_Class_Klasy klasa) {
-        this.skills = (ArrayList<Skill>) klasa.getSkillList();
-        //this.widget = new Group();
-
-        for(int i = 0; i < 8; i++){
-            Skill_Info e = new Skill_Info(klasa.getSkillList().get(i));
-            e.setVisible(false);
-            e.setPosition(100 + (i * 200), 150);
-            cell_Skill.add(e);
-            GUI.getGUI_stage().addActor(cell_Skill.get(i));
+        int licz = 0;
+        int high = 375;
+        for(int i = 0; i < 2; i++){
+            for(int j = 0; j < 4; j++){
+                Skill_Info e = new Skill_Info(klasa.getSkillList().get(licz++));
+                e.setPosition(240 + (j * 200), high);
+                cellGroup.addActor(e);
+                cell_Skill.add(e);
             }
+            high -= 300;
+
+
+        }
+        cellGroup.setName("SkillWindow");
+        cellGroup.setVisible(false);
+        addSource();
+        GUI.getGUI_stage().addActor(cellGroup);
     }
 
-    public static void addSource(){
-        for(int i =0; i < cell_Skill.size(); i++){
-            for(int j = 0; j < skillWindow.getActors().size; j++){
-                if(skillWindow.getRoot().getChildren().get(j).getName().startsWith("Skill_info+")){
-                    skillWindow.getRoot().getChildren().get(j).setVisible(true);
-                }
-
-            }
+    public static void addSource() {
+        for(Skill_Info cell_skill : cell_Skill) {
             SkillBar.dragAndDrop.addSource(
                     createSource(
-                            cell_Skill.get(i)
+                            cell_skill
                     ));
         }
-        System.out.println("Dodałem source");
+
+    }
+
+    public static void setVisibleWindow(boolean warunek){
+        //warunek = !warunek;
+        System.out.println(warunek);
+        (skillWindow.getRoot().findActor("SkillWindow")).setVisible(warunek);
     }
 
     public static void removeSource(){
-        for(int i =0; i < cell_Skill.size(); i++){
+        for(Skill_Info skillInfo : cell_Skill) {
             SkillBar.dragAndDrop.removeSource(
                     createSource(
-                            cell_Skill.get(i)
+                            skillInfo
                     ));
-            for(int j = 0; j < skillWindow.getActors().size; j++){
-                if(skillWindow.getRoot().getChildren().get(j).getName().startsWith("Skill_info+")){
+            for (int j = 0; j < skillWindow.getActors().size; j++) {
+                if (skillWindow.getRoot().getChildren().get(j).getName().startsWith("Skill_info+")) {
                     skillWindow.getRoot().getChildren().get(j).setVisible(false);
                 }
-
-                }
             }
+        }
         System.out.println("Usunąłem source");
     }
 
