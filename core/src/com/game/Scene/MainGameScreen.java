@@ -11,10 +11,7 @@ import com.game.Drop;
 import com.game.GUI.GUI;
 import com.game.androidNavigation.Nav;
 import com.game.object.creature.Player;
-import com.game.operations.Attack;
-import com.game.operations.Movement;
-import com.game.operations.WorldController;
-import com.game.operations.WorldRender;
+import com.game.operations.*;
 import com.game.resources.Resources;
 
 /**
@@ -76,6 +73,7 @@ public class MainGameScreen implements Screen {
         //Update movement
         int aMap = worldRenderer.getWorldController().aMap;
         movement.update(worldController, (TiledMapTileLayer) worldRenderer.getWorldController().objectMap.get(aMap).mMap.getLayers().get(0), game);
+        PlayerController.update();
         attackController.update(null);
         //Render game screen
         worldRenderer.render (player);

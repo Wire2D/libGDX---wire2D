@@ -102,4 +102,8 @@ public class InputController {
         return Gdx.input.isKeyJustPressed(Input.Keys.K);
     }
 
+    public static boolean openInventoryWindow(){
+        return Gdx.input.isKeyJustPressed(Input.Keys.I);
+    }
+
 }

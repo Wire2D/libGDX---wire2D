@@ -133,19 +133,7 @@ public class Movement {
             player.SpeedAnimation = 0.5f;
         }
 
-        if(InputController.pressESC()){
-            game.setScreen(new MainMenuScreen(game));
-        }
 
-        if(InputController.openSkillWindow()){
-            if(!open){
-                SkillWindow.addSource();
-                open = true;
-            } else {
-                SkillWindow.removeSource();
-                open = false;
-            }
-        }
 
 
     }
