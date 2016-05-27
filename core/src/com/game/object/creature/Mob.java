@@ -301,8 +301,23 @@ public class Mob extends Base {
             shapeDebugger.begin(ShapeRenderer.ShapeType.Line);
             shapeDebugger.setColor(Color.WHITE);
             shapeDebugger.line(posMonster.x, posMonster.y + 16, posPlayer.x, posPlayer.y);
+            shapeDebugger.rect(getX() - 16, getY(), 32, 32);
+            shapeDebugger.rect(player.getX() - 16, player.getY(), 32, 40);
             shapeDebugger.end();
             batch.begin();
+            //System.out.println(getWidth() + " = x, y = " + getHeight());
+            bounds.set(getX() - 16, getY(), 32, 32);
+            player.bounds.set(player.getX() - 16, player.getY(), 32, 40);
+            if (bounds.overlaps(player.bounds)) {
+                System.out.println("Mob wlazł na playera");
+                player.setCountToDie(player.getCountToDie() - 1);
+                System.out.println(player.getCountToDie());
+                if (player.getCountToDie() <= 0) {
+                    player.setCountToDie(COUNT_TO_DIE_DEFAULT_VALUE);
+                    player.damage(player, 5);
+                }
+            }
+
         }
         else {
             isChasingPlayer = false;
