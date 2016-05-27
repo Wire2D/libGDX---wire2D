@@ -67,6 +67,7 @@ public class Map extends Stage {
     /**
      * funkcja do renderowania mobow
      * @param collisionLayer Warstwa blokowana
+     * parampampam
      */
     private void renderMobs(TiledMapTileLayer collisionLayer, Player player) {
         SpriteBatch batch = new SpriteBatch();

@@ -19,7 +19,6 @@ import com.game.resources.Resources;
  */
 public class Player extends Base {
 
-
     public float SpeedAnimation = 0.2f;
 
     public Player(String name) {

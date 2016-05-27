@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.game.object.Skills.Skill_Choose;
@@ -18,6 +19,9 @@ import java.util.Random;
  * Created by Mazek27 on 22.03.2016.
  */
 public class Base extends Actor {
+    public Rectangle bounds;
+    private int countToDie;
+    protected int COUNT_TO_DIE_DEFAULT_VALUE = 25;
 
     public boolean animate = false;
 
@@ -71,6 +75,8 @@ public class Base extends Actor {
     public Base(Super_Class_Klasy klasa) {
         this.klasa = klasa;
         this.LEVEL = 150;
+        bounds = new Rectangle();
+        countToDie = COUNT_TO_DIE_DEFAULT_VALUE;
 
         setATT();
         setDEF();
@@ -182,4 +188,11 @@ public class Base extends Actor {
         batch.end();
     }
 
+    public int getCountToDie() {
+        return countToDie;
+    }
+
+    public void setCountToDie(int countToDie) {
+        this.countToDie = countToDie;
+    }
 }
