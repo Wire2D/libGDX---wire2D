@@ -7,7 +7,7 @@ import java.util.List;
  * Klasa Super pod klasy postaci
  * Created by Mazek on 2016-05-14.
  */
-public class Super_Class_Klasy {
+public abstract class Super_Class_Klasy {
 
     //Podstawowe statystyki
     public final int HP_BASE;
@@ -17,8 +17,7 @@ public class Super_Class_Klasy {
     public final int SDEF_BASE;
     public final int SPD_BASE;
 
-    //Skille
-    List<Skill> skillList;
+
 
     Super_Class_Klasy(int HP_BASE, int ATT_BASE, int DEF_BASE, int SATT_BASE, int SDEF_BASE, int SPD_BASE) {
         this.HP_BASE = HP_BASE;
@@ -29,7 +28,5 @@ public class Super_Class_Klasy {
         this.SPD_BASE = SPD_BASE;
     }
 
-    public List<Skill> getSkillList() {
-        return skillList;
-    }
+    public abstract List<Skill> getSkillList();
 }

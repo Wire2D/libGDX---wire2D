@@ -1,11 +1,10 @@
 package com.game.operations;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.game.GUI.GUI;
+import com.game.GUI.SkillBar;
 import com.game.object.Map;
 import com.game.object.creature.Player;
 
@@ -17,7 +16,6 @@ import java.util.ArrayList;
  */
 public class WorldController {
     private static final String TAG = WorldController.class.getName();
-    private static String currentMapName;
     public static ArrayList<Map> objectMap;
     public int aMap;
 
@@ -27,28 +25,29 @@ public class WorldController {
 
     private void init () {
         aMap = 0;
-
         objectMap = new ArrayList<Map> ();
+
         objectMap.add (new Map("shop_place"));
+        objectMap.add (new Map("sword_shop"));
+        objectMap.add (new Map("cave_sword_shop"));
+
+        Gdx.input.setInputProcessor(objectMap.get(0));
+
     }
     public void update (float deltaTime, OrthographicCamera camera, Player player) {
         objectMap.get (aMap).render (camera, player);
     }
 
     public void changeMap(String index, String name, Player player){
-        for(int i = 0 ; i < objectMap.size (); i++){
-            if(objectMap.get (i).mName == name){
-                this.aMap = i;
-                objectMap.get(i).getStage().addActor(player);
-                break;
-            }
-
-            if(i == objectMap.size () -1){
-                objectMap.add (new Map(name));
-                this.aMap = objectMap.size () - 1;
-            }
-
+        if(name.equals("shop_place")){
+            aMap = 0;
+        } else if(name.equals("sword_shop")){
+            aMap = 1;
+        } else if(name.equals("cave_sword_shop")){
+            aMap = 2;
         }
+
+        Gdx.input.setInputProcessor(GUI.getGUI_stage());
 
         TiledMapTileLayer TMTL = (TiledMapTileLayer) objectMap.get (aMap).mMap.getLayers ().get (0);
 

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.game.object.Skills.Skill_Choose;
 import com.game.object.klasy.Super_Class_Klasy;
 
 import java.util.Random;
@@ -80,6 +81,10 @@ public class Base extends Actor {
         setSPD();
     }
 
+    public Super_Class_Klasy getKlasa() {
+        return klasa;
+    }
+
     public void setATT() {
         this.ATT = (int)(((((klasa.ATT_BASE + VI_ATT) * 2) + (Math.sqrt(EV_ATT)* Math.pow(4, -1)))* LEVEL)*Math.pow(100,-1)) + 5;
     }
@@ -129,8 +134,8 @@ public class Base extends Actor {
     public String damage(Base oponent, int skill){
 
 
-        int base_power = klasa.getSkillList().get(skill).getPower();
-        String skill_name = klasa.getSkillList().get(skill).getName();
+        int base_power = klasa.getSkillList().get(Skill_Choose.choose_skill[Skill_Choose.skill[skill]]).getPower();
+        String skill_name = klasa.getSkillList().get(Skill_Choose.choose_skill[Skill_Choose.skill[skill]]).getName();
         int damage = (int) (((((2*LEVEL) + 10)*Math.pow(250,-1))*(ATT*Math.pow(oponent.DEF,-1))*base_power + 2) * modifer(oponent));
         oponent.HP -= damage;
         System.out.println("Obrażenia '" + skill_name + "' : " + damage);

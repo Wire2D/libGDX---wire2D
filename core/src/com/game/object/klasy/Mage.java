@@ -3,6 +3,7 @@ package com.game.object.klasy;
 import com.game.object.Skills.Skill;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Klasa Maga
@@ -10,16 +11,24 @@ import java.util.ArrayList;
  */
 public class Mage extends Super_Class_Klasy {
 
+    //Skille
+    public static List<Skill> skillList;
+
     public Mage() {
         super(45, 49, 49, 65, 65, 45);
         skillList = new ArrayList<Skill>();
-        skillList.add(new Skill("Flash", 5, 10, 120));
-        skillList.add(new Skill("Ember", 25, 40, 150));
-        skillList.add(new Skill("Fire Spin", 15, 35, 300));
-        skillList.add(new Skill("Drain", 5, 15, 250));
-        skillList.add(new Skill("Mega Drain", 15, 40, 200));
-        skillList.add(new Skill("Bubble", 30, 50, 400));
-        skillList.add(new Skill("Water Gun", 25, 45, 100));
-        skillList.add(new Skill("Booble Beam", 20, 65, 700));
+//        skillList.add(new Skill(1, "Flash", 5, 10, 120));
+//        skillList.add(new Skill(2, "Ember", 25, 40, 150));
+//        skillList.add(new Skill(3, "Fire Spin", 15, 35, 300));
+//        skillList.add(new Skill(4, "Drain", 5, 15, 250));
+//        skillList.add(new Skill(5, "Mega Drain", 15, 40, 200));
+//        skillList.add(new Skill(6, "Bubble", 30, 50, 400));
+//        skillList.add(new Skill(7, "Water Gun", 25, 45, 100));
+//        skillList.add(new Skill(8, "Booble Beam", 20, 65, 700));
+    }
+
+    @Override
+    public List<Skill> getSkillList() {
+        return skillList;
     }
 }

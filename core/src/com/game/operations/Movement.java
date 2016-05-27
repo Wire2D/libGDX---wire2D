@@ -6,6 +6,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import com.game.Drop;
 import com.game.Scene.MainMenuScreen;
+import com.game.object.Skills.SkillWindow;
 import com.game.object.creature.Player;
 
 /**
@@ -17,6 +18,7 @@ public class Movement {
 
     private Player player;
     private float speed = 250f;
+    private boolean open = false;
 
     public Movement (Player player) {
         this.player = player;
@@ -133,6 +135,16 @@ public class Movement {
 
         if(InputController.pressESC()){
             game.setScreen(new MainMenuScreen(game));
+        }
+
+        if(InputController.openSkillWindow()){
+            if(!open){
+                SkillWindow.addSource();
+                open = true;
+            } else {
+                SkillWindow.removeSource();
+                open = false;
+            }
         }
 
 

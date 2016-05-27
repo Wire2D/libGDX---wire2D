@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.game.Drop;
 import com.game.GUI.GUI;
 import com.game.androidNavigation.Nav;
@@ -30,7 +31,6 @@ public class MainGameScreen implements Screen {
     private Resources resources;
     private GUI gui;
     private Nav androidNav;
-    private FPSLogger fps;
 
     private boolean paused;
 
@@ -52,15 +52,14 @@ public class MainGameScreen implements Screen {
 
     @Override
     public void show () {
+        resources = new Resources();
         worldController = new WorldController ();
         worldRenderer = new WorldRender (worldController, game.batch);
-        resources = new Resources();
         player = new Player("adas");
         movement = new Movement(player);
         attackController = new Attack(player);
         androidNav = new Nav();
-        gui = new GUI(worldController);
-        fps = new FPSLogger();
+        gui = new GUI(new Stage(), player);
     }
 
     /**
@@ -71,7 +70,6 @@ public class MainGameScreen implements Screen {
     @Override
     public void render (float delta) {
         worldController.update (delta, worldRenderer.getCamera (), player);
-        fps.log();
         Gdx.gl.glClearColor (0,0,0,0);
         Gdx.gl.glClear (GL20.GL_COLOR_BUFFER_BIT);
 
@@ -84,7 +82,7 @@ public class MainGameScreen implements Screen {
         //Render player
         player.render(game.batch);
         //androidNav.render();
-        GUI.render(game.batch,player.getHP(), player.getmHP(), attackController.getcSkill());
+        GUI.render(game.batch,player.getHP(), player.getmHP(), attackController.getcSkill(), player);
     }
 
     /**
