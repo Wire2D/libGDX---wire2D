@@ -7,6 +7,9 @@
   - [ ] za pomoca klawisza Tab, gracz powinien móc wybrac atakowanego moba, z mobów które są w zasięgu
   
 2. UI
-  - [ ] 
-  - [ ] 
-  - [ ] 
+  - [ ] Skill Bar
+    - [X] Przeskakiwanie pomiedzy skillami za pomocą klawiszy 1 .. 0
+    - [X] Rysowanie obrazka skilla na pasku
+  - [ ] Skill Info
+  - [X] Info Bar
+  - [ ] InventoryWindow
