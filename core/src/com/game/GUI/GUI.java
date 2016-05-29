@@ -1,12 +1,14 @@
 package com.game.GUI;
 
-import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.game.Inventory.InventoryUI;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
+import com.game.Inventory.Inventory;
+import com.game.Inventory.InventoryActor;
 import com.game.object.Skills.SkillWindow;
 import com.game.object.creature.Player;
-import com.game.operations.WorldController;
 
 /**
  * Główna klasa GUI, odpowiedzialna za render
@@ -17,6 +19,7 @@ import com.game.operations.WorldController;
 public class GUI {
 
     private static Stage GUI_stage;
+    private InventoryActor inventoryActor;
 
     private static HpBar healthBar;
     private static SpBar spBar;
@@ -30,7 +33,8 @@ public class GUI {
         expBar = new ExpBar();
         skillBar = new SkillBar(player);
         new SkillWindow(player.getKlasa());
-        new InventoryUI();
+        //Skin uiSkin = Drop.assets.get("res/json/uiskin.json", Skin.class);
+        new InventoryActor(new Inventory(), new DragAndDrop(), new Skin(Gdx.files.internal("res/json/uiskin.json")));
     }
 
     public static void render(SpriteBatch batch, int aHP, int mHP, int skill, Player player){
