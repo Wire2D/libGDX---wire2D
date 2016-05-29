@@ -61,7 +61,6 @@ public class InventoryActor extends Window {
 
 		pack();
 
-		// it is hidden by default
 		setVisible(false);
 		mInventoryWindow = this;
 		GUI.getGUI_stage().addActor(this);
