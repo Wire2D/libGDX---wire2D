@@ -1,10 +1,6 @@
 package com.game.operations;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
-import com.game.Inventory.InventoryUI;
-import com.game.Scene.MainMenuScreen;
-import com.game.androidNavigation.Nav;
+import com.game.Inventory.InventoryActor;
 import com.game.object.Skills.SkillWindow;
 
 
@@ -28,10 +24,10 @@ public class PlayerController {
         }
 
         if(InputController.openInventoryWindow()){
-            if(InventoryUI.mInventoryWindow.isVisible()){
-                InventoryUI.mInventoryWindow.setVisible(false);
+            if(InventoryActor.mInventoryWindow.isVisible()){
+                InventoryActor.mInventoryWindow.setVisible(false);
             } else {
-                InventoryUI.mInventoryWindow.setVisible(true);
+                InventoryActor.mInventoryWindow.setVisible(true);
             }
         }
     }
