@@ -32,18 +32,7 @@ public class Npc extends Base {
 
         mImage = mUpImage;
         mAnimation = mUpAnimation;
-        position = new Vector2 (200,200);
-    }
-
-    public void render(SpriteBatch batch){
-        update();
-        if(animate){
-            stateTime += Gdx.graphics.getDeltaTime();           // #15
-            currentFrame = mAnimation.getKeyFrame(stateTime, true);
-            batch.draw (currentFrame,position.x - 16,position.y- 5);
-        } else {
-            batch.draw (mImage, position.x - 16, position.y- 5);
-        }
+        setPosition(200,200);
     }
 
     private void update(){
