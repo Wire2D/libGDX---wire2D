@@ -41,9 +41,9 @@ public class Slot {
 	 *         least the same amount of items as the given other slot.
 	 *         {@code False} otherwise.
 	 */
-	public boolean matches(Slot other) {
-		return this.item == other.item && this.amount >= other.amount;
-	}
+	// public boolean matches(Slot other) {
+	// 	return this.item == other.item && this.amount >= other.amount;
+	// }
 
 	public boolean add(Item item, int amount) {
 		if (this.item == item || this.item == null) {
