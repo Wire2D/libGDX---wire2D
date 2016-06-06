@@ -177,15 +177,16 @@ public class Base extends Actor {
     }
 
     public void render(SpriteBatch batch){
-        batch.begin();
+        SpriteBatch batchL = new SpriteBatch();
+        batchL.begin();
         if(animate){
             stateTime += Gdx.graphics.getDeltaTime();           // #15
             currentFrame = mAnimation.getKeyFrame(stateTime, true);
-            batch.draw (currentFrame,getX() - 16,getY() - 5);
+            batchL.draw (currentFrame,getX() - 16,getY() - 5);
         } else {
-            batch.draw (mImage, getX() - 16, getY() - 5);
+            batchL.draw (mImage, getX() - 16, getY() - 5);
         }
-        batch.end();
+        batchL.end();
     }
 
     public int getCountToDie() {
