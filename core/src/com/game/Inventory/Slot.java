@@ -79,6 +79,10 @@ public class Slot {
 		return item;
 	}
 
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
 	public int getAmount() {
 		return amount;
 	}
