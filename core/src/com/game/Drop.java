@@ -15,13 +15,11 @@ import com.game.Settings.Constants;
  */
 public class Drop extends Game {
 
-    public static final AssetManager assets = new AssetManager();
     public SpriteBatch batch;
     public BitmapFont font;
 
 
     public void create() {
-        Texture.setAssetManager(assets);
         Constants.gameMainScreen = new MainGameScreen(this);
         batch = new SpriteBatch ();
         font = new BitmapFont ();

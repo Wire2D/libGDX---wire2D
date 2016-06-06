@@ -58,10 +58,10 @@ public class Map extends Stage {
      * Renderuje obraz mapy
      * @param camera = widok
      */
-    public void render(OrthographicCamera camera, Player player){
+    public void render(SpriteBatch batch, OrthographicCamera camera, Player player){
         tiledMapRenderer.setView (camera);
         tiledMapRenderer.render (backgroudLayers);
-        renderMobs(collisionLayer, player);
+        renderMobs(batch, collisionLayer, player);
     }
 
     /**
@@ -69,13 +69,11 @@ public class Map extends Stage {
      * @param collisionLayer Warstwa blokowana
      * parampampam
      */
-    private void renderMobs(TiledMapTileLayer collisionLayer, Player player) {
-        SpriteBatch batch = new SpriteBatch();
+    private void renderMobs(SpriteBatch batch, TiledMapTileLayer collisionLayer, Player player) {
         batch.begin();
         for (Mob mob : mMob) {
             mob.render(batch, collisionLayer, player);
         }
         batch.end();
-        batch.dispose();
     }
 }

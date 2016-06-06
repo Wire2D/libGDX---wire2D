@@ -37,9 +37,7 @@ public class WorldRender implements Disposable {
 
     public void render(Player player){
         batch.setProjectionMatrix (camera.combined);
-        batch.begin ();
-        worldController.update (Gdx.graphics.getDeltaTime (),camera, player);
-        batch.end ();
+        worldController.update (batch ,camera, player);
     }
 
     public void resize(int width, int height){

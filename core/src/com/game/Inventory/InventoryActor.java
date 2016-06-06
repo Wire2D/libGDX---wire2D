@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
+import com.badlogic.gdx.utils.Array;
 import com.game.GUI.GUI;
 
 /**
@@ -13,6 +14,7 @@ import com.game.GUI.GUI;
 public class InventoryActor extends Window {
 
 	public static Window mInventoryWindow;
+	public Array<SlotActor> slots;
 
 	public InventoryActor(Inventory inventory, DragAndDrop dragAndDrop, Skin skin) {
 		super("Inventory...", skin);
@@ -40,6 +42,7 @@ public class InventoryActor extends Window {
 		}
 
 		pack();
+
 
 		setVisible(false);
 		mInventoryWindow = this;

@@ -66,7 +66,6 @@ public class MainGameScreen implements Screen {
      */
     @Override
     public void render (float delta) {
-        worldController.update (delta, worldRenderer.getCamera (), player);
         Gdx.gl.glClearColor (0,0,0,0);
         Gdx.gl.glClear (GL20.GL_COLOR_BUFFER_BIT);
 
@@ -81,6 +80,7 @@ public class MainGameScreen implements Screen {
         player.render(game.batch);
         //androidNav.render();
         GUI.render(game.batch,player.getHP(), player.getmHP(), attackController.getcSkill(), player);
+        //worldRenderer.getCamera().update();
     }
 
     /**

@@ -8,7 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Payload;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Source;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop.Target;
-import com.game.Drop;
 
 /**
  * Created by Justine on 2016-05-28.
@@ -33,22 +32,25 @@ public class SlotSource extends Source {
 		sourceSlot.take(sourceSlot.getAmount());
 		payload.setObject(payloadSlot);
 
-		TextureAtlas icons = new TextureAtlas("res/icons/icons.atlas");
+		TextureAtlas icons = new TextureAtlas("res/inventory/icons.atlas");
 		TextureRegion icon = icons.findRegion(payloadSlot.getItem().getTextureRegion());
+
 
 		Actor dragActor = new Image(icon);
 		payload.setDragActor(dragActor);
 
 		Actor validDragActor = new Image(icon);
-		// validDragActor.setColor(0, 1, 0, 1);
+		validDragActor.setColor(0, 1, 0, 1);
 		payload.setValidDragActor(validDragActor);
 
 		Actor invalidDragActor = new Image(icon);
-		// invalidDragActor.setColor(1, 0, 0, 1);
+		invalidDragActor.setColor(1, 0, 0, 1);
 		payload.setInvalidDragActor(invalidDragActor);
 
 		return payload;
 	}
+
+
 
 	@Override
 	public void dragStop(InputEvent event, float x, float y, int pointer, Payload payload, Target target) {
