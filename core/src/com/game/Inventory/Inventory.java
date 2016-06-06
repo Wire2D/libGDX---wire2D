@@ -1,7 +1,6 @@
 
 package com.game.Inventory;
 
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 
 /**

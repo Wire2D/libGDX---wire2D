@@ -2,6 +2,7 @@ package com.game.operations;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.game.GUI.GUI;
 import com.game.GUI.SkillBar;
@@ -34,8 +35,8 @@ public class WorldController {
         Gdx.input.setInputProcessor(objectMap.get(0));
 
     }
-    public void update (float deltaTime, OrthographicCamera camera, Player player) {
-        objectMap.get (aMap).render (camera, player);
+    public void update (SpriteBatch batch, OrthographicCamera camera, Player player) {
+        objectMap.get (aMap).render (batch, camera, player);
     }
 
     public void changeMap(String index, String name, Player player){
