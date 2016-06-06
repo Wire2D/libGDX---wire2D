@@ -17,21 +17,16 @@ public class Inventory {
 			slots.add(new Slot(null, 0));
 		}
 
-		// create some random items
-		for (Slot slot : slots) {
-			slot.add(Item.values()[MathUtils.random(0, Item.values().length - 1)], 1);
-		}
-
-		// create a few random empty slots
-		for (int i = 0; i < 10; i++) {
-			Slot randomSlot = slots.get(MathUtils.random(0, slots.size - 1));
-			randomSlot.take(randomSlot.getAmount());
-		}
-
-//		TextureAtlas icons = new TextureAtlas("res/inventory/icons.atlas");
-//        for(int i = 0; i < icons.getRegions().size -1 ; i++){
-//            System.out.println(icons.getRegions().get(i).name.toUpperCase() + "(\""+icons.getRegions().get(i).name+"\"),");
-//        }
+//		// create some random items
+//		for (Slot slot : slots) {
+//			slot.add(Item.values()[MathUtils.random(0, Item.values().length - 1)], 1);
+//		}
+//
+//		// create a few random empty slots
+//		for (int i = 0; i < 3; i++) {
+//			Slot randomSlot = slots.get(MathUtils.random(0, slots.size - 1));
+//			randomSlot.take(randomSlot.getAmount());
+//		}
 	}
 
 	public int checkInventory(Item item) {
